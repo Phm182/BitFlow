@@ -1,0 +1,106 @@
+.wrapper {
+    margin: 100px auto 0;
+    width: 70%;
+    max-width: 1000px;
+    display: flex;
+    justify-content: center;
+}
+
+form {
+    width: 100%;
+    margin: 0;
+}
+
+form * {
+    font-size: 20px;
+    letter-spacing: 0.075em;
+    font-weight: 300;
+    text-transform: uppercase;
+    Proyr: pointer;
+    text-decoration: none;
+    color: white;
+}
+
+form .field {
+    width: 100%;
+    position: relative;
+    margin-bottom: 15px;
+}
+
+form .field label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(90deg, #0052cc, #002366);
+    width: 100%;
+    height: 64px;
+    transition: width 333ms ease-in-out;
+    text-align: center;
+    padding: 18px 0;
+}
+
+form .field input[type="text"],
+form .field textarea,
+form .field input[type="tel"],
+form .field input[type="radio"] {
+    border: none;
+    width: 100%;
+    height: 64px;
+    margin: 0;
+    padding-left: 19.5%;
+    color: #313a3d;
+}
+
+form #msg {
+    height: 64px;
+    resize: none;
+    transition: all 333ms ease-in-out;
+    padding-top: 18px;
+}
+
+form textarea:focus#msg,
+form textarea:not(:placeholder-shown)#msg {
+    height: 166px;
+}
+
+form input[type="text"]:focus+label,
+form input[type="text"]:not(:placeholder-shown)+label,
+form textarea:focus+label,
+form textarea:not(:placeholder-shown)+label,
+form .field:hover label,
+form .field input[type="tel"]:focus+label,
+form .field input[type="tel"]:not(:placeholder-shown)+label {
+    width: 18%;
+}
+
+form input[type="submit"] {
+    background: linear-gradient(90deg, #00e5ff, #0052cc);
+    -webkit-appearance: none;
+    border: none;
+    position: relative;
+    padding: 13px 50px;
+    transition: all 0.3s ease-in-out;
+    margin-bottom: 2rem;
+    color: #000;
+    font-weight: bold;
+}
+
+form input[type="submit"]:hover,
+form input[type="submit"]:focus {
+    background: linear-gradient(90deg, #0052cc, #00e5ff);
+}
+
+.radio div label,
+.radio div p,
+.radio_options label {
+    color: white !important;
+}
+
+.radio_options input[type="radio"] {
+    accent-color: var(--cyan);
+    margin-right: 8px;
+}
+
+.radio_options div {
+    margin-bottom: .5rem;
+}

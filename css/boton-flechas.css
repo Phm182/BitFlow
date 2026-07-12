@@ -1,0 +1,215 @@
+.btn-conteiner {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-top: 65vh;
+    --color-text: #ffffff;
+    --color-background: none;
+    --color-outline: #ff145b80;
+    --color-shadow: rgba(0, 229, 255, 0.5);
+}
+
+.btn-content {
+    display: flex;
+    align-items: center;
+    padding: 5px 30px;
+    padding-right: 45px;
+    margin-right: 3px;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 30px;
+    color: var(--color-text);
+    background: var(--color-background);
+    transition: 1s;
+    border-radius: 100px;
+    box-shadow: 0 0 0.4em 0 var(--color-shadow);
+}
+
+.btn-content:hover,
+.btn-content:focus {
+    transition: 0.5s;
+    -webkit-animation: btn-content 1s;
+    animation: btn-content 1s;
+    outline: 0.1em solid transparent;
+    outline-offset: 0.2em;
+    box-shadow: 0 0 0.4em 0 var(--color-background);
+    animation-iteration-count: infinite;
+}
+
+.btn-content .icon-arrow {
+    transition: 0.5s;
+    margin-right: 0px;
+    transform: scale(0.6);
+}
+
+.btn-content:hover .icon-arrow {
+    transition: 0.5s;
+    margin-right: 25px;
+}
+
+.icon-arrow {
+    width: 20px;
+    margin-left: 15px;
+    position: relative;
+    top: 6%;
+}
+
+
+/* SVG */
+
+#arrow-icon-one {
+    transition: 0.4s;
+    transform: translateX(-60%);
+}
+
+#arrow-icon-two {
+    transition: 0.5s;
+    transform: translateX(-30%);
+}
+
+.btn-content:hover #arrow-icon-three {
+    animation: color_anim 1s infinite 0.2s;
+}
+
+.btn-content:hover #arrow-icon-one {
+    transform: translateX(0%);
+    animation: color_anim 1s infinite 0.6s;
+}
+
+.btn-content:hover #arrow-icon-two {
+    transform: translateX(0%);
+    animation: color_anim 1s infinite 0.4s;
+}
+
+
+/* SVG animations */
+
+@keyframes color_anim {
+    0% {
+        fill: white;
+    }
+    50% {
+        fill: var(--color-background);
+    }
+    100% {
+        fill: white;
+    }
+}
+
+
+/* Button animations */
+
+@-webkit-keyframes btn-content {
+    0% {
+        outline: 0.2em solid var(--color-background);
+        outline-offset: 0;
+    }
+}
+
+@keyframes btn-content {
+    0% {
+        outline: 0.2em solid var(--color-background);
+        outline-offset: 0;
+    }
+}
+
+/* Flecha hacia abajo (scroll entre secciones) — mismo estilo que index, rotada 90° */
+.btn-conteiner--scroll {
+    padding-top: 0;
+}
+
+.btn-content.btn-scroll-next {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    width: 72px;
+    height: 72px;
+    margin-right: 0;
+    box-sizing: border-box;
+}
+
+.btn-content.btn-scroll-next .icon-arrow.icon-arrow--down {
+    width: 48px;
+    height: 48px;
+    margin: 0;
+    top: 0;
+    left: 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: none;
+    flex-shrink: 0;
+}
+
+.btn-content.btn-scroll-next .icon-arrow.icon-arrow--down svg {
+    display: block;
+    width: 66px;
+    height: 43px;
+    transform: rotate(90deg) scale(0.72);
+    transform-origin: center center;
+}
+
+.btn-content.btn-scroll-next:hover .icon-arrow.icon-arrow--down,
+.btn-content.btn-scroll-next:focus .icon-arrow.icon-arrow--down {
+    margin-right: 0;
+    margin-bottom: 0;
+    transform: translateY(4px);
+}
+
+/* En reposo: solo la flecha del medio, centrada en el SVG */
+.btn-scroll-next .arrow-icon-one,
+.btn-scroll-next .arrow-icon-three {
+    opacity: 0;
+    transition: opacity 0.35s ease, transform 0.4s ease;
+}
+
+.btn-scroll-next .arrow-icon-one {
+    transform: translateX(-60%);
+}
+
+.btn-scroll-next .arrow-icon-two {
+    opacity: 1;
+    transition: opacity 0.35s ease, transform 0.5s ease;
+    transform: translateX(0);
+}
+
+.btn-scroll-next .arrow-icon-three {
+    transform: translateX(0);
+}
+
+.btn-scroll-next:hover .arrow-icon-one,
+.btn-scroll-next:hover .arrow-icon-three {
+    opacity: 1;
+}
+
+.btn-scroll-next:hover .arrow-icon-three {
+    animation: color_anim 1s infinite 0.2s;
+}
+
+.btn-scroll-next:hover .arrow-icon-one {
+    transform: translateX(0%);
+    animation: color_anim 1s infinite 0.6s;
+}
+
+.btn-scroll-next:hover .arrow-icon-two {
+    transform: translateX(0%);
+    animation: color_anim 1s infinite 0.4s;
+}
+
+.Boton-flechas--down .btn-scroll-next,
+.section-scroll-hint .btn-scroll-next {
+    box-shadow: 0 0 1em 0 rgba(0, 229, 255, 0.6);
+    animation: btnPulseDown 2s ease-in-out infinite 1.2s;
+}
+
+@keyframes btnPulseDown {
+    0%, 100% {
+        box-shadow: 0 0 0.6em 0 rgba(0, 229, 255, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 1.4em 0 rgba(0, 229, 255, 0.8);
+    }
+}

@@ -1,0 +1,143 @@
+.gallery {
+    position: relative;
+    width: min(92vw, 720px);
+    aspect-ratio: 720 / 420;
+    min-height: 0;
+    margin: 0 auto;
+    left: auto;
+    transform: none;
+}
+
+.shadow {
+    position: absolute;
+    top: 92%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%;
+    height: 6%;
+    border-radius: 50%;
+    background: radial-gradient(rgba(0, 229, 255, 0.3), rgba(0, 0, 0, 0) 70%);
+}
+
+.slider-items .gallery img,
+.clipped-border img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.clipped-border {
+    -webkit-clip-path: polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+    clip-path: polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+    padding: 0.35em;
+    background: linear-gradient(135deg, #00e5ff, #0052cc);
+    width: 27.8%;
+    height: 47.6%;
+    max-height: none;
+    max-width: none;
+    transition: transform 0.2s;
+    position: absolute;
+    cursor: pointer;
+    margin-top: 0;
+}
+
+.clipped-border:before {
+    content: '';
+    position: absolute;
+    opacity: 0.5;
+    width: 350px;
+    height: 70px;
+    background: white;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    transform: rotate(45deg);
+    transition: transform 0.5s;
+}
+
+.clipped-border:hover:before {
+    transform: translate(-100px, 400%) rotate(45deg);
+    transition: transform 0.5s;
+}
+
+.clipped-border:nth-child(1) {
+    top: 0;
+    left: 0;
+}
+
+.clipped-border:nth-child(2) {
+    top: 46.7%;
+    left: 16.4%;
+}
+
+.clipped-border:nth-child(3) {
+    top: 0;
+    left: 32.6%;
+}
+
+.clipped-border:nth-child(4) {
+    top: 46.7%;
+    left: 49%;
+}
+
+.clipped-border:nth-child(5) {
+    top: 0;
+    left: 65.3%;
+}
+
+#clipped {
+    -webkit-clip-path: polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+    clip-path: polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+}
+
+.clipped-border:hover {
+    transform: scale(1.2);
+    transition: transform 0.2s;
+    z-index: 10;
+}
+
+.hex-gallery-center .gallery,
+.section-quienes-inicio .gallery {
+    left: auto;
+    transform: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media screen and (max-width: 500px) {
+    .gallery {
+        width: min(96vw, 380px);
+        aspect-ratio: 380 / 240;
+    }
+
+    .clipped-border {
+        width: 31%;
+        height: 50%;
+    }
+
+    .clipped-border:nth-child(1) {
+        top: 0;
+        left: 0;
+    }
+
+    .clipped-border:nth-child(2) {
+        top: 0;
+        left: 31%;
+    }
+
+    .clipped-border:nth-child(3) {
+        top: 0;
+        left: 62%;
+    }
+
+    .clipped-border:nth-child(4) {
+        top: 41%;
+        left: 15.5%;
+    }
+
+    .clipped-border:nth-child(5) {
+        top: 41%;
+        left: 46.5%;
+    }
+}
