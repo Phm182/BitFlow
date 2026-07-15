@@ -9,3 +9,7 @@
                 <?php include 'inc/templates/splash-hero.php'; ?>
             </div>
         </section>
+
+<script src="js/splash.js"></script>
+</body>
+</html>
