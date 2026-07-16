@@ -772,13 +772,14 @@ body.page-inicio {
         justify-content: flex-start;
     }
 
-    /* ¿Qué hacemos? mobile: solapas + panel + flecha en una pantalla */
+    /* ¿Qué hacemos? mobile: solapas + panel + pipeline + flecha en una pantalla */
     body.page-inicio #section-hacemos.page-section {
         min-height: 100dvh;
         min-height: 100svh;
-        padding-top: calc(64px + 0.35rem);
-        padding-bottom: 0.35rem;
+        padding-top: calc(64px + 0.25rem);
+        padding-bottom: 0.25rem;
         justify-content: flex-start;
+        overflow: hidden;
     }
 
     body.page-inicio #section-hacemos .hacemos-wrap {
@@ -793,14 +794,14 @@ body.page-inicio {
 
     body.page-inicio #section-hacemos .hacemos-wrap > .nombre,
     body.page-inicio #section-hacemos .hacemos-wrap > .nombre span {
-        font-size: 0.95rem;
+        font-size: 0.92rem;
         letter-spacing: 0.14em;
         margin: 0 0 0.65rem;
-        padding-top: 0.1rem;
+        padding-top: 0;
     }
 
     body.page-inicio #section-hacemos .hacemos-tabs {
-        gap: 0.35rem;
+        gap: 0.3rem;
         margin: 0 0 0.7rem;
     }
 
@@ -808,16 +809,16 @@ body.page-inicio {
         flex: 1 1 0;
         min-width: 0;
         flex-direction: column;
-        padding: 0.45rem 0.3rem;
-        font-size: 0.72rem;
+        padding: 0.4rem 0.25rem;
+        font-size: 0.7rem;
         letter-spacing: 0.02em;
-        gap: 0.2rem;
+        gap: 0.15rem;
         border-radius: 10px;
         line-height: 1.15;
     }
 
     body.page-inicio #section-hacemos .hacemos-tab i {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
     }
 
     body.page-inicio #section-hacemos .hacemos-tab__label--full {
@@ -830,32 +831,39 @@ body.page-inicio {
 
     body.page-inicio #section-hacemos .hacemos-panels {
         min-height: 0;
-        flex: 1 1 auto;
-        display: flex;
+        flex: 0 0 auto;
+        scroll-padding-inline: 0;
     }
 
     body.page-inicio #section-hacemos .hacemos-panel {
         width: 100%;
-        gap: 0.4rem;
-        padding: 0.75rem 0.8rem 0.85rem;
+        gap: 0.7rem;
+        padding: 0.4rem 0.85rem 0rem;
         border-radius: 12px;
         justify-content: flex-start;
     }
 
+    body.page-inicio #section-hacemos .hacemos-carousel-meta {
+        display: flex;
+        margin-top: 0.4rem;
+    }
+
     body.page-inicio #section-hacemos .hacemos-panel__icon {
-        width: 36px;
-        height: 36px;
-        font-size: 0.95rem;
+        width: 34px;
+        height: 34px;
+        font-size: 0.9rem;
     }
 
     body.page-inicio #section-hacemos .hacemos-panel h3 {
-        font-size: clamp(1rem, 4.2vw, 1.25rem);
-        line-height: 1.25;
+        font-size: clamp(1rem, 4.2vw, 1.2rem);
+        line-height: 1.3;
+        margin: 0;
     }
 
     body.page-inicio #section-hacemos .hacemos-panel__lead {
         font-size: 0.8rem;
-        line-height: 1.4;
+        line-height: 1.45;
+        margin: 0;
         display: -webkit-box;
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
@@ -863,13 +871,13 @@ body.page-inicio {
     }
 
     body.page-inicio #section-hacemos .hacemos-panel__points {
-        gap: 0.35rem;
-        margin: 0.1rem 0 0;
+        gap: 0.55rem;
+        margin: 0.15rem 0 0;
     }
 
     body.page-inicio #section-hacemos .hacemos-panel__points li {
         font-size: 0.76rem;
-        line-height: 1.35;
+        line-height: 1.4;
         padding-left: 0.95rem;
     }
 
@@ -878,14 +886,72 @@ body.page-inicio {
     }
 
     body.page-inicio #section-hacemos .hacemos-panel__cta {
-        margin-top: 0.25rem;
+        margin-top: 0.35rem;
         padding: 0.5rem 0.9rem;
-        font-size: 0.78rem;
+        font-size: 0.76rem;
+    }
+
+    body.page-inicio #section-hacemos .hacemos-viz {
+        flex: 0 0 auto;
+        height: 88px;
+        min-height: 88px;
+        max-height: 88px;
+        margin-top: 0.4rem;
+        border-radius: 10px;
+    }
+
+    body.page-inicio #section-hacemos .hacemos-viz__hud {
+        top: 0.28rem;
+        padding: 0 0.4rem;
+        gap: 0.18rem;
+    }
+
+    body.page-inicio #section-hacemos .hacemos-viz__chip {
+        padding: 0.12rem 0.1rem;
+        font-size: 0.48rem;
+        letter-spacing: 0.02em;
+    }
+
+    body.page-inicio #section-hacemos .hacemos-viz__caption {
+        bottom: 0.18rem;
+        font-size: 0.5rem;
+        letter-spacing: 0.06em;
+    }
+
+    body.page-inicio #section-hacemos .hacemos-carousel-meta {
+        margin-top: 0.25rem;
+        gap: 0.2rem;
+    }
+
+    body.page-inicio #section-hacemos .hacemos-swipe-hint {
+        font-size: 0.58rem;
     }
 
     body.page-inicio #section-hacemos .section-scroll-hint--hacemos {
-        margin-top: 0.15rem;
-        padding: 0.15rem 0 0.35rem;
+        margin-top: -0.45rem;
+        padding: 0;
+        position: relative;
+        top: -0.7rem;
+    }
+
+    /* Botón siguiente sección: círculo más chico en todo mobile */
+    body.page-inicio .section-scroll-hint .btn-scroll-next,
+    body.page-inicio .Boton-flechas--down .btn-scroll-next {
+        width: 52px;
+        height: 52px;
+    }
+
+    body.page-inicio .section-scroll-hint .btn-scroll-next .icon-arrow.icon-arrow--down,
+    body.page-inicio .Boton-flechas--down .btn-scroll-next .icon-arrow.icon-arrow--down {
+        width: 36px;
+        height: 36px;
+    }
+
+    body.page-inicio .section-scroll-hint .btn-scroll-next .icon-arrow.icon-arrow--down svg,
+    body.page-inicio .Boton-flechas--down .btn-scroll-next .icon-arrow.icon-arrow--down svg {
+        width: 48px;
+        height: 32px;
+        transform: rotate(90deg) scale(0.68);
     }
 
     body.page-inicio #section-quienes .section-quienes-inicio {
@@ -1282,8 +1348,19 @@ body.page-inicio {
     }
 }
 
-body.page-inicio .page-section:not(.page-section--hero):not(.page-section--map) {
+body.page-inicio .page-section:not(.page-section--hero):not(.page-section--map):not(#section-hacemos) {
     min-height: calc(80vh * var(--section-scale));
+}
+
+@media (min-width: 771px) {
+    body.page-inicio #section-hacemos.page-section {
+        min-height: 100vh;
+        min-height: 100dvh;
+        padding-top: calc(72px + 0.5rem);
+        padding-bottom: 0.5rem;
+        justify-content: flex-start;
+        overflow: hidden;
+    }
 }
 
 body.page-inicio .section-quienes-inicio,
@@ -1337,17 +1414,22 @@ body.page-inicio .section-scroll-hint:not(.section-scroll-hint--quienes) {
     width: 100%;
     max-width: min(920px, 94vw);
     margin: 0 auto;
-    padding: 1rem 2% 0;
+    padding: 0.35rem 2% 0;
     text-align: center;
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .hacemos-wrap > .nombre {
-    margin: 0 0 1.25rem;
-    padding-top: 0.5rem;
+    margin: 0 0 0.85rem;
+    padding-top: 0.15rem;
     color: white;
     font-size: clamp(1rem, 2.2vw, 1.3em);
     letter-spacing: 0.25em;
     text-align: center;
+    flex: 0 0 auto;
 }
 
 .hacemos-wrap > .nombre span {
@@ -1359,7 +1441,8 @@ body.page-inicio .section-scroll-hint:not(.section-scroll-hint--quienes) {
     flex-wrap: wrap;
     justify-content: center;
     gap: 0.55rem;
-    margin: 0 auto 1.15rem;
+    margin: 0 auto 0.85rem;
+    flex: 0 0 auto;
 }
 
 .hacemos-tab {
@@ -1405,53 +1488,100 @@ body.page-inicio .section-scroll-hint:not(.section-scroll-hint--quienes) {
 
 .hacemos-panels {
     position: relative;
-    min-height: 320px;
+    min-height: 0;
+    flex: 0 0 auto;
+    display: flex;
+    gap: 0;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    /* pan-y: el dedo puede scrollear la página en el texto; el swipe horizontal lo maneja JS */
+    touch-action: pan-y;
+}
+
+.hacemos-panels::-webkit-scrollbar {
+    display: none;
 }
 
 .hacemos-panel {
-    display: none;
+    display: flex;
+    flex: 0 0 100%;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
     flex-direction: column;
     align-items: center;
-    gap: 0.75rem;
-    padding: 1.35rem 1.5rem 1.5rem;
+    gap: 0.55rem;
+    padding: 1.1rem 1.35rem 1.2rem;
     border: 1px solid rgba(0, 229, 255, 0.22);
     border-radius: 16px;
     background: radial-gradient(circle at 50% 0%, rgba(0, 82, 204, 0.28), rgba(0, 0, 0, 0.9) 70%);
     box-shadow: 0 0 36px rgba(0, 229, 255, 0.1);
     text-align: center;
-    animation: hacemosPanelIn 0.35s ease;
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
 }
 
-.hacemos-panel.is-active {
+.hacemos-carousel-meta {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: 0.55rem;
+    flex: 0 0 auto;
+}
+
+.hacemos-dots {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.45rem;
 }
 
-@keyframes hacemosPanelIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.hacemos-dot {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    border: 1px solid rgba(0, 229, 255, 0.45);
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+    transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.hacemos-dot.is-active {
+    background: var(--cyan);
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.55);
+    transform: scale(1.15);
+}
+
+.hacemos-swipe-hint {
+    margin: 0;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(0, 229, 255, 0.7);
 }
 
 .hacemos-panel__icon {
-    width: 52px;
-    height: 52px;
+    width: 48px;
+    height: 48px;
     display: grid;
     place-items: center;
     border-radius: 50%;
     background: radial-gradient(circle, rgba(0, 229, 255, 0.28), rgba(0, 35, 80, 0.45));
     box-shadow: 0 0 18px rgba(0, 229, 255, 0.28);
     color: var(--cyan);
-    font-size: 1.25rem;
+    font-size: 1.15rem;
 }
 
 .hacemos-panel h3 {
     margin: 0;
-    font-size: clamp(1.25rem, 2.4vw, 1.7rem);
+    font-size: clamp(1.2rem, 2.2vw, 1.55rem);
     line-height: 1.25;
     color: #fff;
 }
@@ -1459,27 +1589,27 @@ body.page-inicio .section-scroll-hint:not(.section-scroll-hint--quienes) {
 .hacemos-panel__lead {
     margin: 0;
     max-width: 52ch;
-    font-size: 0.98rem;
-    line-height: 1.6;
+    font-size: 0.94rem;
+    line-height: 1.55;
     color: rgba(255, 255, 255, 0.86);
 }
 
 .hacemos-panel__points {
     list-style: none;
-    margin: 0.35rem 0 0.25rem;
+    margin: 0.2rem 0 0.1rem;
     padding: 0;
     width: 100%;
     max-width: 58ch;
     text-align: left;
     display: grid;
-    gap: 0.55rem;
+    gap: 0.45rem;
 }
 
 .hacemos-panel__points li {
     position: relative;
     padding-left: 1.15rem;
-    font-size: 0.92rem;
-    line-height: 1.5;
+    font-size: 0.9rem;
+    line-height: 1.45;
     color: rgba(255, 255, 255, 0.88);
 }
 
@@ -1504,8 +1634,8 @@ body.page-inicio .section-scroll-hint:not(.section-scroll-hint--quienes) {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    margin-top: 0.55rem;
-    padding: 0.7rem 1.35rem;
+    margin-top: 0.35rem;
+    padding: 0.65rem 1.25rem;
     border: 1px solid rgba(0, 229, 255, 0.55);
     border-radius: 8px;
     color: #fff;
@@ -1522,14 +1652,100 @@ body.page-inicio .section-scroll-hint:not(.section-scroll-hint--quienes) {
     outline: none;
 }
 
+/* Pipeline holográfico — ocupa el espacio restante */
+.hacemos-viz {
+    position: relative;
+    flex: 1 1 auto;
+    min-height: 160px;
+    margin-top: 0.85rem;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 229, 255, 0.22);
+    background: radial-gradient(circle at 50% 20%, rgba(0, 82, 204, 0.28), rgba(0, 0, 0, 0.92) 70%);
+    box-shadow: 0 0 36px rgba(0, 229, 255, 0.1);
+}
+
+.hacemos-viz__canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.hacemos-viz__glow {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(90deg, rgba(0, 229, 255, 0.12), transparent 28%, transparent 72%, rgba(0, 229, 255, 0.12)),
+        radial-gradient(circle at 50% 100%, rgba(0, 229, 255, 0.12), transparent 55%);
+}
+
+.hacemos-viz__hud {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0.65rem;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    gap: 0.35rem;
+    padding: 0 1rem;
+    pointer-events: none;
+}
+
+.hacemos-viz__chip {
+    flex: 1 1 0;
+    min-width: 0;
+    text-align: center;
+    padding: 0.28rem 0.35rem;
+    border: 1px solid rgba(0, 229, 255, 0.22);
+    border-radius: 999px;
+    background: rgba(0, 8, 20, 0.72);
+    color: rgba(184, 247, 255, 0.85);
+    font-size: clamp(0.58rem, 1.1vw, 0.72rem);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, color 0.25s ease;
+}
+
+.hacemos-viz__chip.is-pulse {
+    border-color: rgba(0, 229, 255, 0.9);
+    color: #fff;
+    box-shadow: 0 0 14px rgba(0, 229, 255, 0.35);
+}
+
+.hacemos-viz__caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0.55rem;
+    z-index: 2;
+    margin: 0;
+    text-align: center;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(0, 229, 255, 0.75);
+    pointer-events: none;
+}
+
 #section-hacemos .section-scroll-hint--hacemos {
-    margin-top: clamp(0.75rem, 2vh, 1.5rem);
-    padding: 0.5rem 0 1.25rem;
+    margin-top: 0.35rem;
+    padding: 0.25rem 0 0.35rem;
+    flex: 0 0 auto;
 }
 
 body.page-inicio .hacemos-wrap {
-    transform: scale(var(--section-scale));
-    transform-origin: top center;
+    transform: none;
+}
+
+body.page-inicio #section-hacemos .section-scroll-hint--hacemos {
+    transform: none;
 }
 
 .section-quienes-inicio {

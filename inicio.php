@@ -39,8 +39,8 @@
                     </button>
                 </div>
 
-                <div class="hacemos-panels">
-                    <article class="hacemos-panel is-active" id="panel-software" role="tabpanel" aria-labelledby="tab-software">
+                <div class="hacemos-panels" id="hacemos-panels">
+                    <article class="hacemos-panel is-active" id="panel-software" role="tabpanel" aria-labelledby="tab-software" data-tab="software">
                         <div class="hacemos-panel__icon"><i class="fas fa-rocket" aria-hidden="true"></i></div>
                         <h3>Software que acelera tu negocio</h3>
                         <p class="hacemos-panel__lead">
@@ -56,7 +56,7 @@
                         <a href="contacto.php" class="hacemos-panel__cta">Quiero mi solución digital</a>
                     </article>
 
-                    <article class="hacemos-panel" id="panel-hardware" role="tabpanel" aria-labelledby="tab-hardware" hidden>
+                    <article class="hacemos-panel" id="panel-hardware" role="tabpanel" aria-labelledby="tab-hardware" data-tab="hardware">
                         <div class="hacemos-panel__icon"><i class="fas fa-microchip" aria-hidden="true"></i></div>
                         <h3>PCs y notebooks armadas para rendir</h3>
                         <p class="hacemos-panel__lead">
@@ -71,7 +71,7 @@
                         <a href="contacto.php" class="hacemos-panel__cta">Armá tu equipo con nosotros</a>
                     </article>
 
-                    <article class="hacemos-panel" id="panel-soporte" role="tabpanel" aria-labelledby="tab-soporte" hidden>
+                    <article class="hacemos-panel" id="panel-soporte" role="tabpanel" aria-labelledby="tab-soporte" data-tab="soporte">
                         <div class="hacemos-panel__icon"><i class="fas fa-shield-alt" aria-hidden="true"></i></div>
                         <h3>Soporte integral: software + hardware</h3>
                         <p class="hacemos-panel__lead">
@@ -85,6 +85,24 @@
                         </ul>
                         <a href="contacto.php" class="hacemos-panel__cta">Quiero soporte continuo</a>
                     </article>
+                </div>
+
+                <div class="hacemos-carousel-meta" aria-hidden="false">
+                    <div class="hacemos-dots" id="hacemos-dots" role="tablist" aria-label="Servicios"></div>
+                    <p class="hacemos-swipe-hint">Deslizá para ver más servicios</p>
+                </div>
+
+                <div class="hacemos-viz" id="hacemos-viz" data-mode="software" aria-hidden="true">
+                    <canvas class="hacemos-viz__canvas" id="hacemos-canvas"></canvas>
+                    <div class="hacemos-viz__glow"></div>
+                    <div class="hacemos-viz__hud">
+                        <span class="hacemos-viz__chip" data-hud="0">Idea</span>
+                        <span class="hacemos-viz__chip" data-hud="1">Arquitectura</span>
+                        <span class="hacemos-viz__chip" data-hud="2">Build</span>
+                        <span class="hacemos-viz__chip" data-hud="3">Deploy</span>
+                        <span class="hacemos-viz__chip" data-hud="4">Escala</span>
+                    </div>
+                    <p class="hacemos-viz__caption"><span id="hacemos-viz-caption">Pipeline digital BitFlow · en vivo</span></p>
                 </div>
             </div>
 
