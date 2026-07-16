@@ -772,6 +772,122 @@ body.page-inicio {
         justify-content: flex-start;
     }
 
+    /* ¿Qué hacemos? mobile: solapas + panel + flecha en una pantalla */
+    body.page-inicio #section-hacemos.page-section {
+        min-height: 100dvh;
+        min-height: 100svh;
+        padding-top: calc(64px + 0.35rem);
+        padding-bottom: 0.35rem;
+        justify-content: flex-start;
+    }
+
+    body.page-inicio #section-hacemos .hacemos-wrap {
+        width: min(94vw, 640px);
+        max-width: 94vw;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 auto;
+        min-height: 0;
+    }
+
+    body.page-inicio #section-hacemos .hacemos-wrap > .nombre,
+    body.page-inicio #section-hacemos .hacemos-wrap > .nombre span {
+        font-size: 0.95rem;
+        letter-spacing: 0.14em;
+        margin: 0 0 0.65rem;
+        padding-top: 0.1rem;
+    }
+
+    body.page-inicio #section-hacemos .hacemos-tabs {
+        gap: 0.35rem;
+        margin: 0 0 0.7rem;
+    }
+
+    body.page-inicio #section-hacemos .hacemos-tab {
+        flex: 1 1 0;
+        min-width: 0;
+        flex-direction: column;
+        padding: 0.45rem 0.3rem;
+        font-size: 0.72rem;
+        letter-spacing: 0.02em;
+        gap: 0.2rem;
+        border-radius: 10px;
+        line-height: 1.15;
+    }
+
+    body.page-inicio #section-hacemos .hacemos-tab i {
+        font-size: 0.9rem;
+    }
+
+    body.page-inicio #section-hacemos .hacemos-tab__label--full {
+        display: none;
+    }
+
+    body.page-inicio #section-hacemos .hacemos-tab__label--short {
+        display: inline;
+    }
+
+    body.page-inicio #section-hacemos .hacemos-panels {
+        min-height: 0;
+        flex: 1 1 auto;
+        display: flex;
+    }
+
+    body.page-inicio #section-hacemos .hacemos-panel {
+        width: 100%;
+        gap: 0.4rem;
+        padding: 0.75rem 0.8rem 0.85rem;
+        border-radius: 12px;
+        justify-content: flex-start;
+    }
+
+    body.page-inicio #section-hacemos .hacemos-panel__icon {
+        width: 36px;
+        height: 36px;
+        font-size: 0.95rem;
+    }
+
+    body.page-inicio #section-hacemos .hacemos-panel h3 {
+        font-size: clamp(1rem, 4.2vw, 1.25rem);
+        line-height: 1.25;
+    }
+
+    body.page-inicio #section-hacemos .hacemos-panel__lead {
+        font-size: 0.8rem;
+        line-height: 1.4;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    body.page-inicio #section-hacemos .hacemos-panel__points {
+        gap: 0.35rem;
+        margin: 0.1rem 0 0;
+    }
+
+    body.page-inicio #section-hacemos .hacemos-panel__points li {
+        font-size: 0.76rem;
+        line-height: 1.35;
+        padding-left: 0.95rem;
+    }
+
+    body.page-inicio #section-hacemos .hacemos-panel__points li:last-child {
+        display: none;
+    }
+
+    body.page-inicio #section-hacemos .hacemos-panel__cta {
+        margin-top: 0.25rem;
+        padding: 0.5rem 0.9rem;
+        font-size: 0.78rem;
+    }
+
+    body.page-inicio #section-hacemos .section-scroll-hint--hacemos {
+        margin-top: 0.15rem;
+        padding: 0.15rem 0 0.35rem;
+    }
+
     body.page-inicio #section-quienes .section-quienes-inicio {
         justify-content: flex-start;
         gap: 0;
@@ -1211,8 +1327,209 @@ body.page-inicio .section-scroll-hint:not(.section-scroll-hint--quienes) {
 }
 
 #section-quienes,
-#section-contacto {
+#section-contacto,
+#section-hacemos {
     align-items: center;
+}
+
+/* ¿Qué hacemos? — solapas de servicios */
+.hacemos-wrap {
+    width: 100%;
+    max-width: min(920px, 94vw);
+    margin: 0 auto;
+    padding: 1rem 2% 0;
+    text-align: center;
+}
+
+.hacemos-wrap > .nombre {
+    margin: 0 0 1.25rem;
+    padding-top: 0.5rem;
+    color: white;
+    font-size: clamp(1rem, 2.2vw, 1.3em);
+    letter-spacing: 0.25em;
+    text-align: center;
+}
+
+.hacemos-wrap > .nombre span {
+    color: inherit;
+}
+
+.hacemos-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.55rem;
+    margin: 0 auto 1.15rem;
+}
+
+.hacemos-tab {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    padding: 0.65rem 1rem;
+    border: 1px solid rgba(0, 229, 255, 0.28);
+    border-radius: 999px;
+    background: rgba(0, 12, 28, 0.65);
+    color: rgba(255, 255, 255, 0.82);
+    font-family: inherit;
+    font-size: 0.82rem;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: border-color 0.25s ease, background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.hacemos-tab__label--short {
+    display: none;
+}
+
+.hacemos-tab i {
+    color: var(--cyan);
+    font-size: 0.9rem;
+}
+
+.hacemos-tab:hover,
+.hacemos-tab:focus-visible {
+    border-color: rgba(0, 229, 255, 0.7);
+    color: #fff;
+    outline: none;
+    box-shadow: 0 0 16px rgba(0, 229, 255, 0.18);
+}
+
+.hacemos-tab.is-active {
+    background: linear-gradient(135deg, rgba(0, 229, 255, 0.22), rgba(0, 82, 204, 0.35));
+    border-color: rgba(0, 229, 255, 0.85);
+    color: #fff;
+    box-shadow: 0 0 22px rgba(0, 229, 255, 0.22);
+}
+
+.hacemos-panels {
+    position: relative;
+    min-height: 320px;
+}
+
+.hacemos-panel {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.35rem 1.5rem 1.5rem;
+    border: 1px solid rgba(0, 229, 255, 0.22);
+    border-radius: 16px;
+    background: radial-gradient(circle at 50% 0%, rgba(0, 82, 204, 0.28), rgba(0, 0, 0, 0.9) 70%);
+    box-shadow: 0 0 36px rgba(0, 229, 255, 0.1);
+    text-align: center;
+    animation: hacemosPanelIn 0.35s ease;
+}
+
+.hacemos-panel.is-active {
+    display: flex;
+}
+
+@keyframes hacemosPanelIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hacemos-panel__icon {
+    width: 52px;
+    height: 52px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 229, 255, 0.28), rgba(0, 35, 80, 0.45));
+    box-shadow: 0 0 18px rgba(0, 229, 255, 0.28);
+    color: var(--cyan);
+    font-size: 1.25rem;
+}
+
+.hacemos-panel h3 {
+    margin: 0;
+    font-size: clamp(1.25rem, 2.4vw, 1.7rem);
+    line-height: 1.25;
+    color: #fff;
+}
+
+.hacemos-panel__lead {
+    margin: 0;
+    max-width: 52ch;
+    font-size: 0.98rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.86);
+}
+
+.hacemos-panel__points {
+    list-style: none;
+    margin: 0.35rem 0 0.25rem;
+    padding: 0;
+    width: 100%;
+    max-width: 58ch;
+    text-align: left;
+    display: grid;
+    gap: 0.55rem;
+}
+
+.hacemos-panel__points li {
+    position: relative;
+    padding-left: 1.15rem;
+    font-size: 0.92rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.88);
+}
+
+.hacemos-panel__points li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 50%;
+    background: var(--cyan);
+    box-shadow: 0 0 8px rgba(0, 229, 255, 0.7);
+}
+
+.hacemos-panel__points strong {
+    color: var(--cyan);
+    font-weight: 700;
+}
+
+.hacemos-panel__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.55rem;
+    padding: 0.7rem 1.35rem;
+    border: 1px solid rgba(0, 229, 255, 0.55);
+    border-radius: 8px;
+    color: #fff;
+    text-decoration: none;
+    background: rgba(0, 229, 255, 0.12);
+    transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.hacemos-panel__cta:hover,
+.hacemos-panel__cta:focus-visible {
+    background: rgba(0, 229, 255, 0.28);
+    border-color: var(--cyan);
+    box-shadow: 0 0 18px rgba(0, 229, 255, 0.25);
+    outline: none;
+}
+
+#section-hacemos .section-scroll-hint--hacemos {
+    margin-top: clamp(0.75rem, 2vh, 1.5rem);
+    padding: 0.5rem 0 1.25rem;
+}
+
+body.page-inicio .hacemos-wrap {
+    transform: scale(var(--section-scale));
+    transform-origin: top center;
 }
 
 .section-quienes-inicio {

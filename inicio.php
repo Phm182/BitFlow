@@ -4,7 +4,7 @@
     $splashMode = 'continue';
     $showSplashButton = false;
     $showScrollButton = true;
-    $scrollTarget = '#section-quienes';
+    $scrollTarget = '#section-hacemos';
 ?>
 
                 <div class="header header--delayed">
@@ -14,6 +14,82 @@
         <section id="section-hero" class="page-section page-section--hero">
             <div class="contenedorHeader contenedorHeader--inicio">
                 <?php include 'inc/templates/splash-hero.php'; ?>
+            </div>
+        </section>
+
+        <section id="section-hacemos" class="reveal-section page-section">
+            <div class="hacemos-wrap">
+                <p class="nombre"><span>¿Qué hacemos?</span></p>
+
+                <div class="hacemos-tabs" role="tablist" aria-label="Servicios BitFlow">
+                    <button type="button" class="hacemos-tab is-active" role="tab" id="tab-software" aria-selected="true" aria-controls="panel-software" data-tab="software">
+                        <i class="fas fa-code" aria-hidden="true"></i>
+                        <span class="hacemos-tab__label hacemos-tab__label--full">Desarrollo de Software</span>
+                        <span class="hacemos-tab__label hacemos-tab__label--short">Software</span>
+                    </button>
+                    <button type="button" class="hacemos-tab" role="tab" id="tab-hardware" aria-selected="false" aria-controls="panel-hardware" data-tab="hardware" tabindex="-1">
+                        <i class="fas fa-laptop" aria-hidden="true"></i>
+                        <span class="hacemos-tab__label hacemos-tab__label--full">Armado PC/notebooks</span>
+                        <span class="hacemos-tab__label hacemos-tab__label--short">Armado PC</span>
+                    </button>
+                    <button type="button" class="hacemos-tab" role="tab" id="tab-soporte" aria-selected="false" aria-controls="panel-soporte" data-tab="soporte" tabindex="-1">
+                        <i class="fas fa-headset" aria-hidden="true"></i>
+                        <span class="hacemos-tab__label hacemos-tab__label--full">Soporte y mantenimiento</span>
+                        <span class="hacemos-tab__label hacemos-tab__label--short">Soporte</span>
+                    </button>
+                </div>
+
+                <div class="hacemos-panels">
+                    <article class="hacemos-panel is-active" id="panel-software" role="tabpanel" aria-labelledby="tab-software">
+                        <div class="hacemos-panel__icon"><i class="fas fa-rocket" aria-hidden="true"></i></div>
+                        <h3>Software que acelera tu negocio</h3>
+                        <p class="hacemos-panel__lead">
+                            Convertimos tu idea en un producto digital listo para competir:
+                            aplicaciones web, móviles y sistemas a medida que automatizan procesos,
+                            reducen costos y te dan ventaja real frente al mercado.
+                        </p>
+                        <ul class="hacemos-panel__points">
+                            <li><strong>Resultado medible:</strong> soluciones pensadas para vender más, operar mejor y escalar sin fricción.</li>
+                            <li><strong>A medida, sin plantillas genéricas:</strong> arquitectura sólida, interfaces claras y foco en lo que tu cliente necesita.</li>
+                            <li><strong>De la idea al lanzamiento:</strong> acompañamos diseño, desarrollo y puesta en marcha para que salgas al mercado con impacto.</li>
+                        </ul>
+                        <a href="contacto.php" class="hacemos-panel__cta">Quiero mi solución digital</a>
+                    </article>
+
+                    <article class="hacemos-panel" id="panel-hardware" role="tabpanel" aria-labelledby="tab-hardware" hidden>
+                        <div class="hacemos-panel__icon"><i class="fas fa-microchip" aria-hidden="true"></i></div>
+                        <h3>PCs y notebooks armadas para rendir</h3>
+                        <p class="hacemos-panel__lead">
+                            Armamos equipos a medida según cómo trabajás: oficina, diseño, desarrollo o uso intensivo.
+                            Elegimos componentes con criterio técnico para que pagues rendimiento real, no marketing.
+                        </p>
+                        <ul class="hacemos-panel__points">
+                            <li><strong>Configuración inteligente:</strong> balance perfecto entre potencia, silenciosidad y presupuesto.</li>
+                            <li><strong>Listo para usar:</strong> armado, optimización e instalación para que arranques productivo desde el día uno.</li>
+                            <li><strong>Confianza BitFlow:</strong> hardware seleccionado y probado para durar, con asesoramiento claro y sin vueltas.</li>
+                        </ul>
+                        <a href="contacto.php" class="hacemos-panel__cta">Armá tu equipo con nosotros</a>
+                    </article>
+
+                    <article class="hacemos-panel" id="panel-soporte" role="tabpanel" aria-labelledby="tab-soporte" hidden>
+                        <div class="hacemos-panel__icon"><i class="fas fa-shield-alt" aria-hidden="true"></i></div>
+                        <h3>Soporte integral: software + hardware</h3>
+                        <p class="hacemos-panel__lead">
+                            Mantenemos tu operación estable. Cuidamos tus aplicaciones, sitios y sistemas,
+                            y también tus PCs y notebooks, para que nada frene tu día a día ni tus ventas.
+                        </p>
+                        <ul class="hacemos-panel__points">
+                            <li><strong>Software siempre al día:</strong> correcciones, mejoras, seguridad y monitoreo para que tu producto no se detenga.</li>
+                            <li><strong>Hardware sin sorpresas:</strong> diagnóstico, mantenimiento preventivo y reparación de equipos de trabajo.</li>
+                            <li><strong>Respuesta rápida:</strong> soporte cercano cuando lo necesitás, para minimizar caídas y maximizar continuidad.</li>
+                        </ul>
+                        <a href="contacto.php" class="hacemos-panel__cta">Quiero soporte continuo</a>
+                    </article>
+                </div>
+            </div>
+
+            <div class="section-scroll-hint section-scroll-hint--hacemos">
+                <?php $scrollTarget = '#section-quienes'; include 'inc/templates/boton-scroll.php'; ?>
             </div>
         </section>
 
@@ -160,6 +236,7 @@
     $extraScripts = array(
         'js/splash.js',
         'js/scroll-sections.js',
+        'js/hacemos-tabs.js',
         'js/proyectos-carousel.js',
         'js/contacto-showcase.js',
         'js/map.js',
