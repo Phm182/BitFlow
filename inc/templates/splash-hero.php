@@ -28,7 +28,7 @@
             <div class="BitFlow lett O"><span>O</span></div>
             <div class="BitFlow lett W"><span>W</span></div>
         </div>
-        <p class="splash-tagline" aria-hidden="true">Desarrollo de Software / Soporte técnico</p>
+        <p class="splash-tagline" aria-hidden="true">Desarrollo de Software <span class="splash-tagline__slash">/</span><span class="splash-tagline__br" aria-hidden="true"></span> Soporte técnico</p>
     </div>
 
 <?php else: ?>

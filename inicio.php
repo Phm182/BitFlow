@@ -250,6 +250,11 @@
             </div>
         </section>
 
+        <!-- Un solo botón viewport-fixed (fuera de secciones con transform) -->
+        <div class="scroll-next-fixed" id="scroll-next-fixed" hidden>
+            <?php $scrollTarget = '#section-hacemos'; include 'inc/templates/boton-scroll.php'; ?>
+        </div>
+
 <?php
     $extraScripts = array(
         'js/splash.js',

@@ -471,6 +471,10 @@ html.splash-from-index .LetrasLogo[data-mode="continue"] .icon-only-wrap {
     transition: opacity 0.85s ease 0.15s, transform 0.85s cubic-bezier(0.4, 0, 0.2, 1) 0.15s;
 }
 
+.LetrasLogo[data-mode="continue"] .splash-tagline__br {
+    display: none;
+}
+
 .contenedorHeader--inicio .LetrasLogo {
     z-index: 1;
 }
@@ -582,18 +586,92 @@ html.splash-from-index .LetrasLogo[data-mode="continue"] .icon-only-wrap {
     .LetrasLogo[data-mode="continue"] {
         --splash-center-gap: clamp(1.2rem, 5vw, 2.4rem);
         --splash-bitflow-gap: clamp(2.2rem, 9vw, 4rem);
+        /* Solo para posicionar textos: mitad del anillo actual (logo intacto) */
+        --splash-text-clear: min(150px, 38vw);
     }
 
     .LetrasLogo[data-mode="continue"].is-split-visible .BitFlow.lett span {
-        font-size: clamp(1.05rem, 5.2vw, 1.55rem);
-        letter-spacing: 0.04em;
+        font-size: clamp(1.15rem, 5.6vw, 1.65rem);
+        letter-spacing: 0.1em;
+        text-shadow:
+            0 0 12px rgba(0, 229, 255, 0.55),
+            0 0 28px rgba(0, 229, 255, 0.25);
+    }
+
+    /*
+     * Magia solo en textos (logo sin cambios):
+     * BITFLOW cae desde arriba y se posa sobre el logo.
+     * Tagline materializa debajo con vidrio + scan.
+     */
+    .LetrasLogo[data-mode="continue"].is-split-visible .bitflow-letters-row {
+        top: calc(50% - var(--splash-text-clear) - 0.5rem);
+        left: 50%;
+        right: auto;
+        margin: 0;
+        transform: translate(-50%, -100%);
+        justify-content: center;
+        z-index: 10;
+        animation: splashBrandMagic 1.15s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
 
     .LetrasLogo[data-mode="continue"].is-split-visible .splash-tagline {
+        top: calc(50% + var(--splash-text-clear) + 0.55rem);
+        left: 50%;
+        right: auto;
+        margin: 0;
+        transform: translateX(-50%);
+        max-width: min(84vw, 17.5rem);
+        width: max-content;
         white-space: normal;
-        max-width: min(42vw, 11rem);
-        font-size: clamp(0.62rem, 2.7vw, 0.82rem);
-        line-height: 1.3;
+        text-align: center;
+        font-size: clamp(0.7rem, 3.1vw, 0.9rem);
+        line-height: 1.4;
+        letter-spacing: 0.06em;
+        padding: 0.55rem 0.9rem;
+        position: absolute;
+        z-index: 10;
+        animation: splashTaglineMagic 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.18s both;
+    }
+
+    .LetrasLogo[data-mode="continue"].is-split-visible .splash-tagline__slash {
+        display: none;
+    }
+
+    .LetrasLogo[data-mode="continue"].is-split-visible .splash-tagline__br {
+        display: block;
+    }
+
+    .LetrasLogo[data-mode="continue"].is-split-visible .splash-tagline::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        border-radius: 12px;
+        border: 1px solid rgba(0, 229, 255, 0.4);
+        background:
+            linear-gradient(160deg, rgba(0, 229, 255, 0.16), rgba(0, 12, 32, 0.72) 55%),
+            rgba(0, 6, 18, 0.55);
+        box-shadow:
+            0 0 28px rgba(0, 229, 255, 0.22),
+            inset 0 0 20px rgba(0, 229, 255, 0.1);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        transform-origin: center;
+        animation: splashGlassIn 0.85s ease 0.4s both;
+    }
+
+    .LetrasLogo[data-mode="continue"].is-split-visible .splash-tagline::after {
+        content: '';
+        position: absolute;
+        left: 8%;
+        right: 8%;
+        top: 0;
+        height: 2px;
+        border-radius: 2px;
+        background: linear-gradient(90deg, transparent, #00e5ff, transparent);
+        box-shadow: 0 0 12px rgba(0, 229, 255, 0.95);
+        animation: splashScanDown 2.4s ease-in-out 0.5s infinite;
+        pointer-events: none;
     }
 
     .LetrasLogo[data-mode="continue"] .splash-backdrop .icon-only {
@@ -613,6 +691,73 @@ html.splash-from-index .LetrasLogo[data-mode="continue"] .icon-only-wrap {
     .LetrasLogo[data-mode="continue"] .HexIcono .hex-ring-2 {
         width: min(300px, 76vw);
         height: min(300px, 76vw);
+    }
+}
+
+@keyframes splashBrandMagic {
+    0% {
+        opacity: 0;
+        filter: blur(14px) brightness(1.8);
+        transform: translate(-50%, calc(-100% - 48vh)) scale(1.15);
+        letter-spacing: 0.45em;
+    }
+    55% {
+        opacity: 1;
+        filter: blur(0) brightness(1.2);
+    }
+    100% {
+        opacity: 1;
+        filter: blur(0) brightness(1);
+        transform: translate(-50%, -100%) scale(1);
+        letter-spacing: normal;
+    }
+}
+
+@keyframes splashTaglineMagic {
+    0% {
+        opacity: 0;
+        filter: blur(12px);
+        clip-path: inset(0 0 100% 0);
+        transform: translateX(-50%) translateY(28px) scale(0.94);
+    }
+    45% {
+        opacity: 1;
+        filter: blur(0);
+    }
+    100% {
+        opacity: 1;
+        filter: blur(0);
+        clip-path: inset(0 0 0 0);
+        transform: translateX(-50%) translateY(0) scale(1);
+    }
+}
+
+@keyframes splashGlassIn {
+    from {
+        opacity: 0;
+        transform: scale(0.7, 0.4);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1, 1);
+    }
+}
+
+@keyframes splashScanDown {
+    0% {
+        opacity: 0;
+        transform: translateY(0);
+    }
+    12% {
+        opacity: 1;
+    }
+    78% {
+        opacity: 0.85;
+        transform: translateY(2.6rem);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(2.6rem);
     }
 }
 
@@ -760,8 +905,10 @@ body.page-inicio {
     }
 
     body.page-inicio #section-quienes .section-scroll-hint--quienes {
-        margin-top: 0.1rem;
-        padding: 0.15rem 0 0.35rem;
+        margin: 0;
+        padding: 0;
+        top: auto;
+        bottom: 4vh;
     }
 
     body.page-inicio #section-quienes.page-section {
@@ -927,31 +1074,8 @@ body.page-inicio {
         font-size: 0.58rem;
     }
 
-    body.page-inicio #section-hacemos .section-scroll-hint--hacemos {
-        margin-top: -0.45rem;
-        padding: 0;
-        position: relative;
-        top: -0.7rem;
-    }
-
-    /* Botón siguiente sección: círculo más chico en todo mobile */
-    body.page-inicio .section-scroll-hint .btn-scroll-next,
-    body.page-inicio .Boton-flechas--down .btn-scroll-next {
-        width: 52px;
-        height: 52px;
-    }
-
-    body.page-inicio .section-scroll-hint .btn-scroll-next .icon-arrow.icon-arrow--down,
-    body.page-inicio .Boton-flechas--down .btn-scroll-next .icon-arrow.icon-arrow--down {
-        width: 36px;
-        height: 36px;
-    }
-
-    body.page-inicio .section-scroll-hint .btn-scroll-next .icon-arrow.icon-arrow--down svg,
-    body.page-inicio .Boton-flechas--down .btn-scroll-next .icon-arrow.icon-arrow--down svg {
-        width: 48px;
-        height: 32px;
-        transform: rotate(90deg) scale(0.68);
+    body.page-inicio .page-section:not(.page-section--hero):not(.page-section--map) {
+        padding-bottom: calc(4vh + 4.5rem);
     }
 
     body.page-inicio #section-quienes .section-quienes-inicio {
@@ -1117,8 +1241,10 @@ body.page-inicio {
     }
 
     body.page-inicio #section-proyectos .section-scroll-hint {
-        padding: 0.2rem 0 0.35rem;
-        margin-top: 0.15rem;
+        margin: 0;
+        padding: 0;
+        top: auto;
+        bottom: 4vh;
     }
 
     body.page-inicio .nuestra-historia2,
@@ -1210,9 +1336,11 @@ body.page-inicio {
     }
 
     body.page-inicio #section-quienes .section-scroll-hint--quienes {
-        order: 1;
-        margin-top: 0.25rem;
-        padding: 0.35rem 0 0.25rem;
+        order: unset;
+        margin: 0;
+        padding: 0;
+        top: auto;
+        bottom: 4vh;
     }
 
     body.page-inicio .hex-gallery-center {
@@ -1264,9 +1392,11 @@ body.page-inicio {
     }
 
     body.page-inicio .section-scroll-hint {
-        padding: 0.5rem 0 0.75rem;
-        margin-top: 0.35rem;
-        flex: 0 0 auto;
+        margin: 0;
+        padding: 0;
+        flex: none;
+        top: auto;
+        bottom: 4vh;
     }
 
     /* Contacto mobile: que entre todo (título + texto + botones + showcase + flecha) */
@@ -1343,23 +1473,28 @@ body.page-inicio {
     }
 
     body.page-inicio #section-contacto .section-scroll-hint {
-        padding: 0.15rem 0 0.3rem;
-        margin-top: 0.1rem;
+        margin: 0;
+        padding: 0;
+        top: auto;
+        bottom: 4vh;
     }
 }
 
-body.page-inicio .page-section:not(.page-section--hero):not(.page-section--map):not(#section-hacemos) {
-    min-height: calc(80vh * var(--section-scale));
+body.page-inicio .page-section:not(.page-section--map) {
+    min-height: 100vh;
+    min-height: 100dvh;
 }
 
 @media (min-width: 771px) {
     body.page-inicio #section-hacemos.page-section {
-        min-height: 100vh;
-        min-height: 100dvh;
         padding-top: calc(72px + 0.5rem);
-        padding-bottom: 0.5rem;
+        padding-bottom: calc(4vh + 5.5rem);
         justify-content: flex-start;
         overflow: hidden;
+    }
+
+    body.page-inicio .page-section:not(.page-section--hero):not(.page-section--map) {
+        padding-bottom: calc(4vh + 5.5rem);
     }
 }
 
@@ -1372,9 +1507,74 @@ body.page-inicio #section-contacto .contacto-showcase {
     transform-origin: top center;
 }
 
-body.page-inicio .section-scroll-hint:not(.section-scroll-hint--quienes) {
-    transform: scale(var(--section-scale));
-    transform-origin: top center;
+/*
+ * Botones "siguiente" dentro de cada sección: ocultos.
+ * El click real lo maneja #scroll-next-fixed (1 solo nodo, sin transform de padres).
+ */
+body.page-inicio .section-scroll-hint,
+body.page-inicio .Boton-flechas--down {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    margin: -1px !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    border: 0 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transform: none !important;
+    animation: none !important;
+}
+
+/* Un único botón anclado al viewport — misma coordenada siempre */
+body.page-inicio .scroll-next-fixed {
+    position: fixed;
+    left: 50%;
+    bottom: 4vh;
+    transform: translateX(-50%);
+    z-index: 90;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+body.page-inicio .scroll-next-fixed.is-visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+body.page-inicio .scroll-next-fixed[hidden] {
+    display: none !important;
+}
+
+body.page-inicio .scroll-next-fixed .btn-scroll-next {
+    width: 56px;
+    height: 56px;
+    margin: 0;
+}
+
+body.page-inicio .scroll-next-fixed .btn-scroll-next .icon-arrow.icon-arrow--down {
+    width: 38px;
+    height: 38px;
+}
+
+body.page-inicio .scroll-next-fixed .btn-scroll-next .icon-arrow.icon-arrow--down svg {
+    width: 50px;
+    height: 33px;
+    transform: rotate(90deg) scale(0.7);
+}
+
+body.page-inicio .page-section:not(.page-section--hero):not(.page-section--map) {
+    padding-bottom: calc(4vh + 5rem);
 }
 
 /* Secciones con scroll */
@@ -1735,9 +1935,9 @@ body.page-inicio .section-scroll-hint:not(.section-scroll-hint--quienes) {
 }
 
 #section-hacemos .section-scroll-hint--hacemos {
-    margin-top: 0.35rem;
-    padding: 0.25rem 0 0.35rem;
-    flex: 0 0 auto;
+    margin: 0;
+    padding: 0;
+    flex: none;
 }
 
 body.page-inicio .hacemos-wrap {
@@ -1779,8 +1979,8 @@ body.page-inicio #section-hacemos .section-scroll-hint--hacemos {
 }
 
 #section-quienes .section-scroll-hint--quienes {
-    margin-top: 0;
-    padding: 0.15rem 0 0.75rem;
+    margin: 0;
+    padding: 0;
 }
 
 .hex-gallery-center .gallery {
@@ -1798,11 +1998,15 @@ body.page-inicio #section-hacemos .section-scroll-hint--hacemos {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1rem 0 2rem;
-    margin-top: 1rem;
-    position: relative;
-    z-index: 30;
+    position: absolute;
+    bottom: 4vh;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    z-index: 50;
     pointer-events: auto;
+    transform: none;
 }
 
 #section-proyectos .Proyect,
@@ -1846,7 +2050,8 @@ body.page-inicio #section-quienes .texto1 {
 
 #section-proyectos .section-scroll-hint,
 #section-contacto .section-scroll-hint {
-    margin-top: clamp(1rem, 2.5vh, 2rem);
+    margin: 0;
+    padding: 0;
 }
 
 #section-contacto {
@@ -2144,9 +2349,11 @@ body.page-inicio #section-proyectos {
     }
 
     #section-quienes .section-scroll-hint--quienes {
-        padding-top: 0.25rem;
-        padding-bottom: 0.35rem;
-        order: 1;
+        margin: 0;
+        padding: 0;
+        order: unset;
+        top: auto;
+        bottom: 4vh;
     }
 
     .section-quienes-inicio {
