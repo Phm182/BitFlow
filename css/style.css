@@ -1,4 +1,4 @@
-html {
+﻿html {
     box-sizing: border-box;
     height: 100%;
     max-width: 100%;
@@ -216,7 +216,7 @@ hr {
     animation: move ease-out both, bitflowTextShine 5s ease-in-out infinite;
 }
 
-/* Animación letra por letra (igual que TriFusion) */
+/* AnimaciÃ³n letra por letra (igual que TriFusion) */
 .BitFlow.lett.B span  { animation-duration: 0.2s, 5s; }
 .BitFlow.lett.I span  { animation-duration: 0.35s, 5s; }
 .BitFlow.lett.T span  { animation-duration: 0.5s, 5s; }
@@ -235,7 +235,7 @@ hr {
     50%      { background-position: 0% 0, 0 0; }
 }
 
-/* Hexágono giratorio detrás del icono */
+/* HexÃ¡gono giratorio detrÃ¡s del icono */
 .HexIcono .hex-ring-1 {
     width: 350px;
     height: 350px;
@@ -263,7 +263,7 @@ hr {
     background: linear-gradient(135deg, rgba(0, 82, 204, 0.08), rgba(0, 229, 255, 0.05));
 }
 
-/* Botón flechas dentro del splash */
+/* BotÃ³n flechas dentro del splash */
 .HexIcono .Boton-flechas {
     opacity: 0;
     animation: shadow 0.5s forwards 1.8s;
@@ -358,13 +358,13 @@ hr {
     }
 }
 
-/* Barra hero transición (solo inicio.php) */
+/* Barra hero transiciÃ³n (solo inicio.php) */
 .LetrasLogo[data-mode="continue"] {
     --splash-center-gap: clamp(10rem, 14vw, 15rem);
     --splash-bitflow-gap: clamp(16rem, 24vw, 24rem);
 }
 
-/* Salida desde index: BITFLOW se desvanece en su posición */
+/* Salida desde index: BITFLOW se desvanece en su posiciÃ³n */
 .LetrasLogo[data-mode="full"] .bitflow-letters-row {
     transition: opacity 0.7s ease;
 }
@@ -409,7 +409,7 @@ hr {
     margin-top: 0;
 }
 
-/* En inicio, BITFLOW nunca debajo del logo — solo entra con el split */
+/* En inicio, BITFLOW nunca debajo del logo â€” solo entra con el split */
 .LetrasLogo[data-mode="continue"]:not(.is-split-visible) .splash-hero-bar {
     margin-top: 0;
     height: 0;
@@ -429,7 +429,7 @@ hr {
     animation: none;
 }
 
-/* Continuidad desde index — evita flash y doble animación antes del JS */
+/* Continuidad desde index â€” evita flash y doble animaciÃ³n antes del JS */
 html.splash-from-index .LetrasLogo[data-mode="continue"] .BitFlow.lett span {
     animation: bitflowTextShine 5s ease-in-out infinite;
     transform: translateX(0);
@@ -479,7 +479,7 @@ html.splash-from-index .LetrasLogo[data-mode="continue"] .icon-only-wrap {
     z-index: 1;
 }
 
-/* Blur parallax y anillos — logo icono siempre nítido */
+/* Blur parallax y anillos â€” logo icono siempre nÃ­tido */
 .contenedorHeader--inicio.is-blur-transition::before,
 .contenedorHeader--inicio.is-blur-transition::after {
     transition: filter 0.9s ease, opacity 0.9s ease;
@@ -761,7 +761,7 @@ html.splash-from-index .LetrasLogo[data-mode="continue"] .icon-only-wrap {
     }
 }
 
-/* Continuación desde index.php */
+/* ContinuaciÃ³n desde index.php */
 .splash-continue .BitFlow.lett span {
     animation: bitflowTextShine 5s ease-in-out infinite;
     transform: translateX(0);
@@ -813,7 +813,7 @@ body.page-inicio {
 }
 
 @media (max-width: 770px) {
-    /* Tipografía mobile: misma jerarquía que PC, tamaño legible */
+    /* TipografÃ­a mobile: misma jerarquÃ­a que PC, tamaÃ±o legible */
     body.page-inicio {
         --section-scale: 1;
         font-size: 16px;
@@ -864,7 +864,7 @@ body.page-inicio {
         margin-bottom: 1.5rem;
     }
 
-    /* Quiénes somos mobile: caber título + texto + hex + CTA + flecha en una pantalla */
+    /* QuiÃ©nes somos mobile: caber tÃ­tulo + texto + hex + CTA + flecha en una pantalla */
     body.page-inicio #section-quienes .texto1.mobile .nombre,
     body.page-inicio #section-quienes .texto1.mobile .nombre span {
         font-size: 0.95rem;
@@ -919,7 +919,7 @@ body.page-inicio {
         justify-content: flex-start;
     }
 
-    /* ¿Qué hacemos? mobile: solapas + panel + pipeline + flecha en una pantalla */
+    /* Â¿QuÃ© hacemos? mobile: solapas + panel + pipeline + flecha en una pantalla */
     body.page-inicio #section-hacemos.page-section {
         min-height: 100dvh;
         min-height: 100svh;
@@ -1085,7 +1085,7 @@ body.page-inicio {
         min-height: 0;
     }
 
-    /* Sin animación scale al scroll en mobile (deforma el texto) */
+    /* Sin animaciÃ³n scale al scroll en mobile (deforma el texto) */
     body.page-inicio .texto1 .nombre,
     body.page-inicio .texto1 h3,
     body.page-inicio .nosotros {
@@ -1399,7 +1399,7 @@ body.page-inicio {
         bottom: 4vh;
     }
 
-    /* Contacto mobile: que entre todo (título + texto + botones + showcase + flecha) */
+    /* Contacto mobile: que entre todo (tÃ­tulo + texto + botones + showcase + flecha) */
     body.page-inicio #section-contacto.page-section {
         min-height: 100dvh;
         min-height: 100svh;
@@ -1499,7 +1499,6 @@ body.page-inicio .page-section:not(.page-section--map) {
 }
 
 body.page-inicio .section-quienes-inicio,
-body.page-inicio #section-proyectos .Proyect,
 body.page-inicio #section-contacto .contenedor2,
 body.page-inicio #section-contacto .contacto-botones-mobile,
 body.page-inicio #section-contacto .contacto-showcase {
@@ -1507,8 +1506,15 @@ body.page-inicio #section-contacto .contacto-showcase {
     transform-origin: top center;
 }
 
+@media (max-width: 770px) {
+    body.page-inicio #section-proyectos .Proyect {
+        transform: scale(var(--section-scale));
+        transform-origin: top center;
+    }
+}
+
 /*
- * Botones "siguiente" dentro de cada sección: ocultos.
+ * Botones "siguiente" dentro de cada secciÃ³n: ocultos.
  * El click real lo maneja #scroll-next-fixed (1 solo nodo, sin transform de padres).
  */
 body.page-inicio .section-scroll-hint,
@@ -1528,7 +1534,7 @@ body.page-inicio .Boton-flechas--down {
     animation: none !important;
 }
 
-/* Un único botón anclado al viewport — misma coordenada siempre */
+/* Un Ãºnico botÃ³n anclado al viewport â€” misma coordenada siempre */
 body.page-inicio .scroll-next-fixed {
     position: fixed;
     left: 50%;
@@ -1609,7 +1615,7 @@ body.page-inicio .page-section:not(.page-section--hero):not(.page-section--map) 
     align-items: center;
 }
 
-/* ¿Qué hacemos? — solapas de servicios */
+/* Â¿QuÃ© hacemos? â€” solapas de servicios */
 .hacemos-wrap {
     width: 100%;
     max-width: min(920px, 94vw);
@@ -1699,7 +1705,7 @@ body.page-inicio .page-section:not(.page-section--hero):not(.page-section--map) 
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    /* pan-y: el dedo puede scrollear la página en el texto; el swipe horizontal lo maneja JS */
+    /* pan-y: el dedo puede scrollear la pÃ¡gina en el texto; el swipe horizontal lo maneja JS */
     touch-action: pan-y;
 }
 
@@ -1852,7 +1858,7 @@ body.page-inicio .page-section:not(.page-section--hero):not(.page-section--map) 
     outline: none;
 }
 
-/* Pipeline holográfico — ocupa el espacio restante */
+/* Pipeline hologrÃ¡fico â€” ocupa el espacio restante */
 .hacemos-viz {
     position: relative;
     flex: 1 1 auto;
@@ -2060,12 +2066,24 @@ body.page-inicio #section-quienes .texto1 {
 }
 
 body.page-inicio #section-contacto {
-    min-height: auto;
+    min-height: 100vh;
+    min-height: 100dvh;
 }
 
 body.page-inicio #section-proyectos {
-    min-height: auto;
-    padding-bottom: 1rem;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: hidden;
+}
+
+body.page-inicio #section-proyectos .Proyect {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 #section-contacto #inscripcion {
@@ -2076,7 +2094,7 @@ body.page-inicio #section-proyectos {
     margin-bottom: 0;
 }
 
-/* Showcase contacto — terminal + partículas + órbita */
+/* Showcase contacto â€” terminal + partÃ­culas + Ã³rbita */
 .contacto-showcase {
     position: relative;
     width: min(920px, 94vw);
@@ -2328,6 +2346,7 @@ body.page-inicio #section-proyectos {
 
     body.page-inicio .proyectos-carousel {
         width: 100%;
+        flex: 0 0 auto;
     }
 
     body.page-inicio .proyectos-carousel .contenedor-Proyect {
@@ -2336,6 +2355,225 @@ body.page-inicio #section-proyectos {
         overflow: visible;
         padding: 0;
         scroll-snap-type: none;
+    }
+
+    body.page-inicio #section-proyectos.page-section {
+        padding-top: calc(72px + 0.35rem);
+        padding-bottom: calc(4vh + 5.5rem);
+    }
+
+    body.page-inicio #section-proyectos .Proyect .nombre {
+        margin-bottom: 1.1rem;
+        flex: 0 0 auto;
+    }
+
+    body.page-inicio #section-proyectos .proy-icon {
+        aspect-ratio: 14 / 7;
+        font-size: clamp(2rem, 3.5vw, 3.1rem);
+    }
+
+    body.page-inicio #section-proyectos .Proy h3 {
+        margin-bottom: 0.75rem;
+        font-size: 1.2em;
+    }
+
+    body.page-inicio #section-proyectos .Proy p {
+        margin-bottom: 0.75rem;
+    }
+}
+
+/* Forge — se genera solo desde las cards .Proy (PC + mobile) */
+body.page-inicio .proyectos-forge {
+    position: relative;
+    flex: 0 0 auto;
+    height: 132px;
+    max-height: 132px;
+    margin-top: 0.75rem;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 229, 255, 0.22);
+    background: radial-gradient(circle at 25% 40%, rgba(0, 82, 204, 0.28), rgba(0, 0, 0, 0.94) 70%);
+    box-shadow: 0 0 28px rgba(0, 229, 255, 0.1);
+}
+
+body.page-inicio .proyectos-forge__canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    pointer-events: none;
+}
+
+body.page-inicio .proyectos-forge__content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 150px 1fr 1.2fr;
+    grid-template-rows: 1fr auto;
+    gap: 0.35rem 0.75rem;
+    align-items: center;
+    padding: 0.55rem 0.9rem 0.4rem;
+}
+
+body.page-inicio .proyectos-forge__stack {
+    grid-row: 1;
+    grid-column: 1;
+    position: relative;
+    height: 78px;
+    transform: rotateX(58deg) rotateZ(-32deg);
+    transform-style: preserve-3d;
+    margin-left: 1.1rem;
+}
+
+body.page-inicio .proyectos-forge__layer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(0, 229, 255, 0.4);
+    border-radius: 4px;
+    background: linear-gradient(135deg, rgba(0, 229, 255, 0.22), rgba(0, 40, 90, 0.65));
+    color: rgba(232, 253, 255, 0.9);
+    font-size: 0.58rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    box-shadow: 0 0 12px rgba(0, 229, 255, 0.15);
+    top: calc(var(--i) * 14px);
+    animation: forgeLayerPulse 2.4s ease-in-out infinite;
+    animation-delay: calc(var(--i) * 0.18s);
+}
+
+body.page-inicio .proyectos-forge__beam {
+    grid-row: 1;
+    grid-column: 2;
+    height: 2px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, rgba(0, 229, 255, 0.1), rgba(0, 229, 255, 0.85), rgba(124, 255, 178, 0.9));
+    box-shadow: 0 0 14px rgba(0, 229, 255, 0.55);
+    animation: forgeBeam 1.8s ease-in-out infinite;
+}
+
+body.page-inicio .proyectos-forge__outputs {
+    grid-row: 1;
+    grid-column: 3;
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+}
+
+body.page-inicio .proyectos-forge__chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.4rem 0.7rem;
+    border: 1px solid rgba(0, 229, 255, 0.25);
+    border-radius: 999px;
+    background: rgba(0, 10, 24, 0.72);
+    color: rgba(255, 255, 255, 0.75);
+    font-family: inherit;
+    font-size: 0.68rem;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, color 0.25s ease, background 0.25s ease;
+}
+
+body.page-inicio .proyectos-forge__chip i {
+    color: var(--cyan);
+    font-size: 0.75rem;
+}
+
+body.page-inicio .proyectos-forge__chip.is-on {
+    border-color: rgba(0, 229, 255, 0.9);
+    background: rgba(0, 229, 255, 0.14);
+    color: #fff;
+    box-shadow: 0 0 16px rgba(0, 229, 255, 0.28);
+}
+
+body.page-inicio .proyectos-forge__caption {
+    grid-row: 2;
+    grid-column: 1 / -1;
+    margin: 0;
+    text-align: center;
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(0, 229, 255, 0.72);
+}
+
+@keyframes forgeLayerPulse {
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(1.35); }
+}
+
+@keyframes forgeBeam {
+    0%, 100% { opacity: 0.55; transform: scaleX(0.92); }
+    50% { opacity: 1; transform: scaleX(1); }
+}
+
+@media (max-width: 770px) {
+    body.page-inicio .proyectos-forge {
+        display: block;
+        height: 108px;
+        max-height: 108px;
+        margin-top: 0.45rem;
+        border-radius: 12px;
+    }
+
+    body.page-inicio .proyectos-forge__content {
+        grid-template-columns: 72px 1fr;
+        grid-template-rows: auto auto;
+        gap: 0.25rem 0.5rem;
+        padding: 0.4rem 0.55rem 0.3rem;
+    }
+
+    body.page-inicio .proyectos-forge__stack {
+        height: 52px;
+        margin-left: 0.35rem;
+        transform: rotateX(58deg) rotateZ(-32deg) scale(0.72);
+        transform-origin: left center;
+    }
+
+    body.page-inicio .proyectos-forge__layer {
+        height: 14px;
+        font-size: 0.48rem;
+        top: calc(var(--i) * 11px);
+        letter-spacing: 0.08em;
+    }
+
+    body.page-inicio .proyectos-forge__beam {
+        display: none;
+    }
+
+    body.page-inicio .proyectos-forge__outputs {
+        grid-row: 1;
+        grid-column: 2;
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 0.1rem;
+    }
+
+    body.page-inicio .proyectos-forge__outputs::-webkit-scrollbar {
+        display: none;
+    }
+
+    body.page-inicio .proyectos-forge__chip {
+        flex: 0 0 auto;
+        padding: 0.32rem 0.55rem;
+        font-size: 0.62rem;
+    }
+
+    body.page-inicio .proyectos-forge__caption {
+        font-size: 0.52rem;
+        letter-spacing: 0.08em;
     }
 }
 
@@ -3052,7 +3290,7 @@ span {
 }
 
 
-/* Maps / Ubicación (globo holográfico) */
+/* Maps / UbicaciÃ³n (globo hologrÃ¡fico) */
 
 .mapa {
     height: 60vh;
@@ -3487,7 +3725,7 @@ span {
         font-size: clamp(0.8rem, 3.4vw, 1rem);
     }
 
-    /* Última pantalla en inicio: globo + footer juntos en un viewport */
+    /* Ãšltima pantalla en inicio: globo + footer juntos en un viewport */
     body.page-inicio #section-mapa.page-section--map {
         min-height: 0;
         padding: calc(64px + 0.6rem) 3% 1rem;

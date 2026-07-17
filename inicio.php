@@ -189,6 +189,21 @@
                     </div>
                     <p class="proyectos-swipe-hint">Deslizá para ver más proyectos</p>
                 </div>
+
+                <div class="proyectos-forge" id="proyectos-forge" aria-hidden="true">
+                    <canvas class="proyectos-forge__canvas" id="proyectos-forge-canvas"></canvas>
+                    <div class="proyectos-forge__content">
+                        <div class="proyectos-forge__stack" aria-hidden="true">
+                            <span class="proyectos-forge__layer" style="--i:0">UI</span>
+                            <span class="proyectos-forge__layer" style="--i:1">API</span>
+                            <span class="proyectos-forge__layer" style="--i:2">Data</span>
+                            <span class="proyectos-forge__layer" style="--i:3">Cloud</span>
+                        </div>
+                        <div class="proyectos-forge__beam" aria-hidden="true"></div>
+                        <div class="proyectos-forge__outputs" id="proyectos-forge-outputs"></div>
+                        <p class="proyectos-forge__caption">Arquitectura a medida · de la idea al producto en producción</p>
+                    </div>
+                </div>
             </div>
             <div class="section-scroll-hint">
                 <?php $scrollTarget = '#section-contacto'; include 'inc/templates/boton-scroll.php'; ?>
@@ -261,6 +276,7 @@
         'js/scroll-sections.js',
         'js/hacemos-tabs.js',
         'js/proyectos-carousel.js',
+        'js/proyectos-forge.js',
         'js/contacto-showcase.js',
         'js/map.js',
     );
