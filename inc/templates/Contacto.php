@@ -2,8 +2,9 @@
 <div class="wrapper">
   <form id="contacto" action="validacion_contacto.php" method="post" name="formulario">
     <div class="form_contacto">
+        <h2 class="form-contacto__title">Escribinos</h2>
         <div class="field">
-            <input type="text" id="nombre" name="nombre" placeholder="¿Cómo te llamas?" value="" autofocus/>
+            <input type="text" id="nombre" name="nombre" placeholder="¿Cómo te llamas?" value=""/>
             <label for="nombre">Nombre</label>
         </div>
         <div class="field">
@@ -21,7 +22,7 @@
         </div>
         <div class="radio">
             <div>
-                <p>Seleccione metodo de respuesta:</p>
+                <p>Seleccione método de respuesta:</p>
             </div>
             <div class="radio_options">
                 <div >
@@ -40,6 +41,11 @@
                                 
         </div>
         <input id="btn_enviar" class="button" name="enviar" type="submit" value="Enviar" />
+        <div class="page-contacto__quick">
+            <a href="#" class="page-cta__btn page-cta__btn--ghost wa-picker-trigger">
+                <i class="fa fa-whatsapp" aria-hidden="true"></i> WhatsApp
+            </a>
+        </div>
     </div>
   </form>
 

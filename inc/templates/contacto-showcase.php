@@ -26,7 +26,7 @@
 
         <div class="contacto-stats">
             <div class="contacto-stat">
-                <strong data-count="48">0</strong>
+                <strong data-count="24">0</strong>
                 <span>hs respuesta</span>
             </div>
             <div class="contacto-stat">

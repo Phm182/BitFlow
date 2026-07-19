@@ -1,3 +1,4 @@
+<?php if (empty($hideSiteFooter)): ?>
    <!-- Footer  -->
    <footer>
             <div class="footer contenedor2">
@@ -52,11 +53,13 @@
                     <p>Todos los derechos Reservados BitFlow 2026 ®</p>
                 </div>
             </div>
-        
-        
-        
         </footer>
-        
+<?php else: ?>
+        <a href="#" class="whatsapp wa-picker-trigger" aria-label="Contactar por WhatsApp">
+            <i class="fa fa-whatsapp whatsapp-icon"></i>
+        </a>
+<?php endif; ?>
+
         <?php include __DIR__ . '/whatsapp-picker.php'; ?>
 
         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>         

@@ -11,7 +11,7 @@
     }
 
     function getSectionTitle(section) {
-        var candidates = section.querySelectorAll('.nombre, h3');
+        var candidates = section.querySelectorAll('.nombre, h1, h2, h3, .page-hero__title, .page-story__heading');
         for (var i = 0; i < candidates.length; i++) {
             if (isVisible(candidates[i])) {
                 return candidates[i];
@@ -38,6 +38,11 @@
     function scrollToSection(selector) {
         var section = document.querySelector(selector);
         if (!section) return;
+
+        if (document.body.classList.contains('has-scroll-sections')) {
+            section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            return;
+        }
 
         var anchor = getSectionTitle(section);
         var offset = getHeaderOffset();
@@ -67,7 +72,12 @@
     }
 
     function initFixedScrollButton() {
-        if (!document.body.classList.contains('page-inicio')) return;
+        if (
+            !document.body.classList.contains('page-inicio') &&
+            !document.body.classList.contains('has-scroll-sections')
+        ) {
+            return;
+        }
 
         var fixedWrap = document.getElementById('scroll-next-fixed');
         var fixedBtn = fixedWrap ? fixedWrap.querySelector('.btn-scroll-next') : null;

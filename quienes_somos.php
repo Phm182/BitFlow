@@ -1,94 +1,102 @@
-<?php 
-	include 'inc/templates/header.php';
+<?php
+    $bodyClass = 'page-sub page-quienes has-scroll-sections';
+    $hideSiteFooter = true;
+    include 'inc/templates/header.php';
 ?>
 
 <div class="header section-Proyect-header">
-    <?php 
-        include 'inc/templates/nav.php';
-    ?>
+    <?php include 'inc/templates/nav.php'; ?>
 </div>
 
-<!-- ¿Quiénes somos? -->
+<div class="page-sub-glow page-sub-glow--left" aria-hidden="true"></div>
+<div class="page-sub-glow page-sub-glow--right" aria-hidden="true"></div>
 
-<section>
-                 <!-- Ordenador -->
+<section id="qs-hero" class="page-section page-section--hero qs-section qs-section--hero">
+    <canvas class="qs-constellation" id="qs-constellation" aria-hidden="true"></canvas>
 
-            <div class="contenedor2 section_quienes">
-                <div class="nosotros-img ordenador hex-gallery-section">
-                    <?php include 'inc/templates/hex-gallery.php'; ?>
-                </div>
+    <div class="qs-hero-inner">
+        <p class="page-hero__brand"><span>BitFlow</span></p>
+        <h1 class="page-hero__title">¿Quiénes somos?</h1>
+        <p class="page-hero__lead">
+            Un equipo de desarrollo fundado por dos desarrolladores apasionados por la tecnología.
+            Creamos productos digitales que impactan de verdad.
+        </p>
 
-                <div class="texto1 ordenador">
-                    <p class="nombre"><span>BitFlow</span></p>
-                    <h3>Desarrollo de Software</h3>
-                    <p class="nosotros">
-                        Somos una empresa de desarrollo de software fundada por dos desarrolladores 
-                        apasionados por la tecnología. Creamos productos digitales que impactan 
-                        de verdad: desde aplicaciones de gestión hasta herramientas de análisis 
-                        y automatización.
-                    </p>
-                    <a href="#quienes_somos" class="nuestra-historia">Nuestra Historia</a>
-                </div>
+        <div class="page-quienes__gallery hex-gallery-section">
+            <?php include 'inc/templates/hex-gallery.php'; ?>
+        </div>
+    </div>
 
-                <!-- Mobile -->
+    <div class="section-scroll-hint">
+        <?php $scrollTarget = '#qs-historia'; include 'inc/templates/boton-scroll.php'; ?>
+    </div>
+</section>
 
-                <div class="texto1 mobile">
-                    <p class="nombre"><span>BitFlow</span></p>
-                    <h3>Desarrollo de Software</h3>
-                    <p class="nosotros">
-                        Somos una empresa de desarrollo de software fundada por dos desarrolladores 
-                        apasionados por la tecnología. Creamos productos digitales que impactan 
-                        de verdad.
-                    </p>
-                </div>
-                <div class="nosotros-img mobile hex-gallery-section">
-                    <?php include 'inc/templates/hex-gallery.php'; ?>
-                </div>
-            </div>
-            <div class="btn-nuestra-historia2">
-                <a href="#quienes_somos" class="nuestra-historia2">Nuestra Historia</a>
-            </div>
+<section id="qs-historia" class="page-section qs-section qs-section--story" aria-label="Nuestra historia">
+    <div class="qs-story-inner">
+        <p class="page-story__eyebrow">Nuestra historia</p>
+        <h2 class="page-story__heading">De la idea al código</h2>
 
-            <hr id="quienes_somos">
-            <div class="texto1">
-                <h5> Nuestra Historia </h5>
-                <div class="texto_historia">
-                    <h3> De la idea al código </h3>
-                    <p class="nosotros">
-                        BitFlow nació de la unión de dos desarrolladores con una visión compartida: 
-                        crear software de calidad que resuelva problemas reales. Lo que empezó como 
-                        proyectos entre amigos se convirtió en una empresa dedicada al desarrollo 
-                        de aplicaciones web, móviles y soluciones a medida.
-                    </p>
-                    <h3> Nuestros productos </h3>
-                    <p class="nosotros">
-                        A lo largo del camino desarrollamos Contapp, una plataforma de gestión contable; 
-                        Sirius, un sistema de monitoreo y resultados en tiempo real; Unfollower Assist, 
-                        una herramienta de análisis para redes sociales; y múltiples sitios web y 
-                        aplicaciones para distintos clientes y rubros.
-                    </p>
-                    <h3> Nuestra filosofía </h3>
-                    <p class="nosotros">
-                        Creemos que la tecnología debe ser accesible, funcional y bien diseñada. 
-                        Cada proyecto que tomamos lo tratamos como propio, priorizando la calidad del 
-                        código, la experiencia del usuario y la comunicación transparente con nuestros clientes.
-                    </p>
-                    <h3> ¿Qué hacemos? </h3>
-                    <p class="nosotros">
-                        Desarrollo web, aplicaciones móviles, sistemas de gestión, APIs, integraciones, 
-                        automatizaciones y consultoría tecnológica. Si tenés una idea, nosotros tenemos 
-                        las herramientas y la experiencia para hacerla realidad.
+        <ol class="page-story__rail">
+            <li class="page-story__step">
+                <span class="page-story__marker" aria-hidden="true"><i class="fas fa-lightbulb"></i></span>
+                <div class="page-story__body">
+                    <h3>Origen</h3>
+                    <p>
+                        BitFlow nació de dos desarrolladores con una visión: software de calidad
+                        que resuelve problemas reales. De proyectos entre amigos a empresa de
+                        desarrollo web y soporte técnico.
                     </p>
                 </div>
-                
-            </div>
-            
+            </li>
+            <li class="page-story__step">
+                <span class="page-story__marker" aria-hidden="true"><i class="fas fa-cubes"></i></span>
+                <div class="page-story__body">
+                    <h3>¿Qué hacemos?</h3>
+                    <ul class="page-story__services">
+                        <li><i class="fas fa-code" aria-hidden="true"></i> Desarrollo de Software</li>
+                        <li><i class="fas fa-laptop" aria-hidden="true"></i> Armado PC/notebooks</li>
+                        <li><i class="fas fa-headset" aria-hidden="true"></i> Soporte y mantenimiento</li>
+                    </ul>
+                </div>
+            </li>
+            <li class="page-story__step">
+                <span class="page-story__marker" aria-hidden="true"><i class="fas fa-compass"></i></span>
+                <div class="page-story__body">
+                    <h3>Nuestra filosofía</h3>
+                    <p>
+                        Tecnología accesible, funcional y bien diseñada. Cada proyecto como propio:
+                        código sólido, UX clara y comunicación transparente.
+                    </p>
+                </div>
+            </li>
+            <li class="page-story__step">
+                <span class="page-story__marker" aria-hidden="true"><i class="fas fa-route"></i></span>
+                <div class="page-story__body">
+                    <h3>Cómo trabajamos</h3>
+                    <p>
+                        Escuchamos tu necesidad, diseñamos la solución y la entregamos lista para usar.
+                        Sin vueltas: plazos claros, avance visible y acompañamiento después del lanzamiento.
+                    </p>
+                </div>
+            </li>
+        </ol>
 
+        <div class="page-cta page-cta--inline">
+            <p class="page-cta__text">¿Querés construir algo con nosotros?</p>
+            <a href="contacto.php" class="page-cta__btn">Hablemos de tu proyecto</a>
+        </div>
+    </div>
+</section>
 
+<div class="scroll-next-fixed" id="scroll-next-fixed" hidden>
+    <?php $scrollTarget = '#qs-historia'; include 'inc/templates/boton-scroll.php'; ?>
+</div>
 
-        </section>
-
-
-<?php 
-	include 'inc/templates/footer.php';
+<?php
+    $extraScripts = array(
+        'js/scroll-sections.js',
+        'js/quienes-constellation.js',
+    );
+    include 'inc/templates/footer.php';
 ?>
