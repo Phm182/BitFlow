@@ -10,6 +10,11 @@
                                             <li><a href="quienes_somos.php">¿Quiénes somos?</a></li>
                                             <li><a href="Proyect.php">Proyectos</a></li>
                                             <li><a href="contacto.php">Contacto</a></li>
+                                            <li class="admin-access-item">
+                                                <a href="admin/" class="admin-access-link" aria-label="Ingresar al panel administrativo" title="Panel administrativo">
+                                                    <i class="fas fa-user-shield" aria-hidden="true"></i>
+                                                </a>
+                                            </li>
                         </ul>
                     </div> 
                   </div>

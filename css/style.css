@@ -2370,6 +2370,28 @@ body.page-proyectos .proyectos-forge__caption {
     color: white;
     background-size: 100% 2px;
 }
+.options ul li.admin-access-item {
+    padding-left: 0;
+}
+.options ul li .admin-access-link {
+    display: inline-grid;
+    width: 38px;
+    height: 38px;
+    place-items: center;
+    color: var(--cyan);
+    border: 1px solid rgba(0, 229, 255, 0.35);
+    border-radius: 50%;
+    background: rgba(0, 229, 255, 0.08);
+    background-image: none;
+    box-shadow: 0 0 18px rgba(0, 229, 255, 0.1);
+}
+.options ul li .admin-access-link:hover,
+.options ul li .admin-access-link:focus-visible {
+    color: white;
+    border-color: rgba(0, 229, 255, 0.75);
+    background: rgba(0, 229, 255, 0.16);
+    box-shadow: 0 0 22px rgba(0, 229, 255, 0.24);
+}
 .bitflow-hero,
 .trifusion {
     width: fit-content;
@@ -2480,6 +2502,12 @@ body.page-proyectos .proyectos-forge__caption {
         font-size: clamp(0.62rem, 2.7vw, 0.82rem);
         letter-spacing: 0.01em;
         white-space: nowrap;
+    }
+    body.page-inicio .options ul li .admin-access-link,
+    body.page-sub .options ul li .admin-access-link {
+        width: 30px;
+        height: 30px;
+        font-size: 0.72rem;
     }
     body.page-inicio .menu-pc,
     body.page-sub .menu-pc {

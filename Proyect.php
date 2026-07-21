@@ -31,7 +31,7 @@
                         </div>
                         <h3>Contapp</h3>
                         <p>Gestión contable y administrativa con reportes y dashboard en tiempo real.</p>
-                        <a href="contacto.php" class="boton">Más información</a>
+                        <a href="https://cont-app.com/landing.php" class="boton" target="_blank" rel="noopener noreferrer">Ir a la web</a>
                     </div>
 
                     <div class="Proy">
@@ -40,8 +40,8 @@
                             <i class="fas fa-satellite-dish" aria-hidden="true"></i>
                         </div>
                         <h3>Sirius</h3>
-                        <p>Escuela náutica: cursos de lanchas, veleros y yates con práctica real en Costanera Norte.</p>
-                        <a href="contacto.php" class="boton">Más información</a>
+                        <p>Escuela náutica: cursos de lanchas, veleros y yates con formación práctica y acompañamiento cercano.</p>
+                        <a href="https://sirius.bitflow.com.ar/index.php" class="boton" target="_blank" rel="noopener noreferrer">Ir a la web</a>
                     </div>
 
                     <div class="Proy">

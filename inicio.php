@@ -162,7 +162,7 @@
                                 Plataforma de gestión contable y administrativa diseñada para simplificar 
                                 el control financiero de tu negocio.
                             </p>
-                            <a href="contacto.php" class="boton">Más información</a>
+                            <a href="https://cont-app.com/landing.php" class="boton" target="_blank" rel="noopener noreferrer">Ir a la web</a>
                         </div>
         
                         <div class="Proy">
@@ -173,9 +173,9 @@
                             <h3>Sirius</h3>
                             <p>
                                 Escuela náutica con cursos de lanchas, veleros y yates.
-                                Formación práctica en Costanera Norte, de la primera amarre a maniobras avanzadas.
+                                Formación práctica desde el primer amarre hasta maniobras avanzadas.
                             </p>
-                            <a href="contacto.php" class="boton">Más información</a>
+                            <a href="https://sirius.bitflow.com.ar/index.php" class="boton" target="_blank" rel="noopener noreferrer">Ir a la web</a>
                         </div>
         
                         <div class="Proy">
