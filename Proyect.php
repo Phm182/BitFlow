@@ -25,21 +25,30 @@
             <div class="proyectos-carousel">
                 <div class="contenedor-Proyect" id="proyectos-track">
                     <div class="Proy">
-                        <div class="proy-icon"><i class="fas fa-chart-line"></i></div>
+                        <div class="proy-icon proy-icon--logo">
+                            <img class="proy-logo proy-logo--contapp" src="imgLogo/Contapp.png" alt="Logo de Contapp">
+                            <i class="fas fa-chart-line" aria-hidden="true"></i>
+                        </div>
                         <h3>Contapp</h3>
                         <p>Gestión contable y administrativa con reportes y dashboard en tiempo real.</p>
                         <a href="contacto.php" class="boton">Más información</a>
                     </div>
 
                     <div class="Proy">
-                        <div class="proy-icon"><i class="fas fa-satellite-dish"></i></div>
+                        <div class="proy-icon proy-icon--logo">
+                            <img class="proy-logo proy-logo--sirius" src="imgLogo/Sirius.png" alt="Logo de Sirius">
+                            <i class="fas fa-satellite-dish" aria-hidden="true"></i>
+                        </div>
                         <h3>Sirius</h3>
-                        <p>Monitoreo y resultados en vivo desde cualquier dispositivo.</p>
+                        <p>Escuela náutica: cursos de lanchas, veleros y yates con práctica real en Costanera Norte.</p>
                         <a href="contacto.php" class="boton">Más información</a>
                     </div>
 
                     <div class="Proy">
-                        <div class="proy-icon"><i class="fas fa-user-minus"></i></div>
+                        <div class="proy-icon proy-icon--logo">
+                            <img class="proy-logo proy-logo--unfollow" src="imgLogo/Unfollow%20Assist.png" alt="Logo de Unfollow Assist">
+                            <i class="fas fa-user-minus" aria-hidden="true"></i>
+                        </div>
                         <h3>Unfollower Assist</h3>
                         <p>Análisis inteligente de seguidores y presencia en redes.</p>
                         <a href="contacto.php" class="boton">Más información</a>

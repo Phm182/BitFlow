@@ -26,8 +26,8 @@
             </div>
             <div class="radio_options">
                 <div >
-                    <input type="radio" id="metodo_celular" name="metodo" value="celular" checked >
-                    <label for="metodo_celular">Celular</label>
+                    <input type="radio" id="metodo_whatsapp" name="metodo" value="whatsapp" checked >
+                    <label for="metodo_whatsapp">WhatsApp</label>
                 </div>
             <div>
                     <input type="radio" id="metodo_email" name="metodo" value="email" >

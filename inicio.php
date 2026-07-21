@@ -153,7 +153,10 @@
                 <div class="proyectos-carousel">
                     <div class="contenedor-Proyect" id="proyectos-track">
                         <div class="Proy">
-                            <div class="proy-icon"><i class="fas fa-chart-line"></i></div>
+                            <div class="proy-icon proy-icon--logo">
+                                <img class="proy-logo proy-logo--contapp" src="imgLogo/Contapp.png" alt="Logo de Contapp">
+                                <i class="fas fa-chart-line" aria-hidden="true"></i>
+                            </div>
                             <h3>Contapp</h3>
                             <p>
                                 Plataforma de gestión contable y administrativa diseñada para simplificar 
@@ -163,17 +166,23 @@
                         </div>
         
                         <div class="Proy">
-                            <div class="proy-icon"><i class="fas fa-satellite-dish"></i></div>
+                            <div class="proy-icon proy-icon--logo">
+                                <img class="proy-logo proy-logo--sirius" src="imgLogo/Sirius.png" alt="Logo de Sirius">
+                                <i class="fas fa-satellite-dish" aria-hidden="true"></i>
+                            </div>
                             <h3>Sirius</h3>
                             <p>
-                                Sistema de monitoreo y resultados en tiempo real. Visualizá datos 
-                                y métricas de tu operación al instante.
+                                Escuela náutica con cursos de lanchas, veleros y yates.
+                                Formación práctica en Costanera Norte, de la primera amarre a maniobras avanzadas.
                             </p>
                             <a href="contacto.php" class="boton">Más información</a>
                         </div>
         
                         <div class="Proy">
-                            <div class="proy-icon"><i class="fas fa-user-minus"></i></div>
+                            <div class="proy-icon proy-icon--logo">
+                                <img class="proy-logo proy-logo--unfollow" src="imgLogo/Unfollow%20Assist.png" alt="Logo de Unfollow Assist">
+                                <i class="fas fa-user-minus" aria-hidden="true"></i>
+                            </div>
                             <h3>Unfollower Assist</h3>
                             <p>
                                 Herramienta inteligente para gestionar y analizar seguidores 
