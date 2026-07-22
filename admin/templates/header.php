@@ -10,6 +10,8 @@ $authenticatedUser = admin_user();
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex,nofollow,noarchive">
     <title><?= admin_h($pageTitle) ?> | BitFlow Admin</title>
+    <link rel="icon" type="image/png" href="<?= admin_h(rtrim(dirname(admin_base_url()), '/\\') . '/img/favicon.png') ?>" sizes="512x512">
+    <link rel="apple-touch-icon" href="<?= admin_h(rtrim(dirname(admin_base_url()), '/\\') . '/img/favicon.png') ?>">
     <link rel="stylesheet" href="<?= admin_h(admin_url('assets/admin.css')) ?>">
 </head>
 <body>

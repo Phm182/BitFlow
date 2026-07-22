@@ -4,7 +4,9 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="BitFlow - Desarrollo de software, aplicaciones web y soluciones digitales a medida.">
-        <title>BitFlow | Desarrollo de Software</title> 
+        <title>BitFlow | Desarrollo de Software</title>
+        <link rel="icon" type="image/png" href="img/favicon.png" sizes="512x512">
+        <link rel="apple-touch-icon" href="img/favicon.png">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Krona+One&display=swap" rel="stylesheet">
