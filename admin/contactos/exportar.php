@@ -50,7 +50,8 @@ $stmt->bind_param(
     $dateTo
 );
 $stmt->execute();
-$result = $stmt->get_result();
+$contacts = admin_stmt_fetch_all($stmt);
+$stmt->close();
 
 function admin_csv_value($value): string
 {
@@ -61,7 +62,7 @@ function admin_csv_value($value): string
     return $text;
 }
 
-admin_audit($conn, 'contactos_exportados', 'contacto', null, 'Exportación CSV con ' . $result->num_rows . ' registros');
+admin_audit($conn, 'contactos_exportados', 'contacto', null, 'Exportación CSV con ' . count($contacts) . ' registros');
 
 header_remove('Content-Security-Policy');
 header('Content-Type: text/csv; charset=utf-8');
@@ -72,7 +73,7 @@ $output = fopen('php://output', 'wb');
 fwrite($output, "\xEF\xBB\xBF");
 fputcsv($output, ['ID', 'Nombre', 'Celular', 'Email', 'Consulta', 'Método', 'Estado', 'Archivado', 'Notas internas', 'Fecha', 'Actualizado'], ';');
 
-while ($row = $result->fetch_assoc()) {
+foreach ($contacts as $row) {
     fputcsv($output, [
         (int) $row['id'],
         admin_csv_value($row['nombre']),
@@ -81,14 +82,13 @@ while ($row = $result->fetch_assoc()) {
         admin_csv_value($row['consulta']),
         admin_csv_value($row['metodo']),
         admin_csv_value($row['estado']),
-        $row['archivado'] ? 'Sí' : 'No',
-        admin_csv_value($row['notas_admin']),
+        !empty($row['archivado']) ? 'Sí' : 'No',
+        admin_csv_value($row['notas_admin'] ?? ''),
         $row['fecha_registro'],
-        $row['actualizado_at'],
+        $row['actualizado_at'] ?? '',
     ], ';');
 }
 
 fclose($output);
-$stmt->close();
 exit;
 

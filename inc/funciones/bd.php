@@ -8,7 +8,7 @@
 $admin_setup_key = '123456';
 
 // Crear conexión
-$conn = new mysqli($host, $user, $password, $dbname, $port);
+$conn = new mysqli($host, $user, $password, $dbname, (int) $port);
 
 // Verificar conexión
 if ($conn->connect_error) {

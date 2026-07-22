@@ -1,5 +1,10 @@
 Options -Indexes
 
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^favicon\.ico$ img/favicon.png [L]
+</IfModule>
+
 <IfModule mod_authz_core.c>
     <FilesMatch "(^\.|\.env|\.ini|\.log|\.sql|\.bak|\.dist)$">
         Require all denied

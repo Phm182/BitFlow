@@ -57,8 +57,8 @@ require __DIR__ . '/templates/header.php';
 ?>
 <section class="admin-auth-card">
     <div class="admin-brand">
-        <span class="admin-brand__mark">B</span>
-        <span>BitFlow <small>Admin</small></span>
+        <img class="admin-brand__logo admin-brand__logo--auth" src="<?= admin_h(admin_site_url('img/logo-bitflow-hd.png')) ?>" alt="BitFlow">
+        <span><small>Admin</small></span>
     </div>
     <h1>Crear primer administrador</h1>
     <p>Este formulario se deshabilita automáticamente después de crear la primera cuenta.</p>

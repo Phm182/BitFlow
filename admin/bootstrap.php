@@ -13,7 +13,11 @@ set_exception_handler(static function (Throwable $exception): void {
         http_response_code(500);
         header('Content-Type: text/html; charset=utf-8');
     }
-    echo '<!doctype html><html lang="es"><meta charset="utf-8"><title>Error</title><body><h1>No pudimos completar la operación</h1><p>Intentá nuevamente. Si el problema continúa, revisá el registro de errores del servidor.</p></body></html>';
+    $safeHint = '';
+    if ($exception instanceof RuntimeException && strpos($exception->getMessage(), 'admin_usuarios') !== false) {
+        $safeHint = '<p>Falta crear las tablas del panel. En phpMyAdmin importá <code>sql/admin_migration.sql</code> (o <code>sql/bitflow.sql</code> en una base nueva) y volvé a intentar.</p>';
+    }
+    echo '<!doctype html><html lang="es"><meta charset="utf-8"><title>Error</title><body style="font-family:system-ui,sans-serif;background:#050b16;color:#effaff;padding:2rem"><h1>No pudimos completar la operación</h1><p>Intentá nuevamente. Si el problema continúa, revisá el registro de errores del servidor.</p>' . $safeHint . '</body></html>';
     exit;
 });
 
@@ -64,9 +68,64 @@ function admin_base_url(): string
     return $position === false ? '/admin' : substr($script, 0, $position + 6);
 }
 
+function admin_site_url(string $path = ''): string
+{
+    $root = str_replace('\\', '/', dirname(admin_base_url()));
+    if ($root === '/' || $root === '.') {
+        $root = '';
+    }
+    return $root . ($path === '' ? '' : '/' . ltrim($path, '/'));
+}
+
 function admin_url(string $path = ''): string
 {
     return rtrim(admin_base_url(), '/') . ($path === '' ? '' : '/' . ltrim($path, '/'));
+}
+
+/**
+ * Fetch asociativo compatible con hosting sin mysqlnd (sin get_result).
+ */
+function admin_stmt_fetch_all(mysqli_stmt $stmt): array
+{
+    if (method_exists($stmt, 'get_result')) {
+        $result = @$stmt->get_result();
+        if ($result instanceof mysqli_result) {
+            $rows = $result->fetch_all(MYSQLI_ASSOC);
+            $result->free();
+            return $rows ?: [];
+        }
+    }
+
+    $stmt->store_result();
+    $meta = $stmt->result_metadata();
+    if ($meta === false) {
+        return [];
+    }
+
+    $row = [];
+    $bind = [];
+    while ($field = $meta->fetch_field()) {
+        $bind[] = &$row[$field->name];
+    }
+    call_user_func_array([$stmt, 'bind_result'], $bind);
+
+    $rows = [];
+    while ($stmt->fetch()) {
+        $copy = [];
+        foreach ($row as $key => $value) {
+            $copy[$key] = $value;
+        }
+        $rows[] = $copy;
+    }
+    $meta->free();
+
+    return $rows;
+}
+
+function admin_stmt_fetch_assoc(mysqli_stmt $stmt): ?array
+{
+    $rows = admin_stmt_fetch_all($stmt);
+    return $rows[0] ?? null;
 }
 
 function admin_redirect(string $path): void
@@ -111,27 +170,39 @@ function admin_take_flashes(): array
 
 function admin_table_exists(mysqli $conn, string $table): bool
 {
-    $stmt = $conn->prepare('SELECT 1 FROM information_schema.TABLES WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = ?');
-    $stmt->bind_param('s', $table);
-    $stmt->execute();
-    $exists = (bool) $stmt->get_result()->fetch_row();
-    $stmt->close();
-    return $exists;
+    $safe = preg_replace('/[^a-zA-Z0-9_]/', '', $table);
+    if ($safe === '') {
+        return false;
+    }
+    try {
+        $result = $conn->query('SHOW TABLES LIKE \'' . $conn->real_escape_string($safe) . '\'');
+        return $result !== false && $result->num_rows > 0;
+    } catch (Throwable $exception) {
+        error_log('[BitFlow Admin] table_exists: ' . $exception->getMessage());
+        return false;
+    }
 }
 
 function admin_column_exists(mysqli $conn, string $table, string $column): bool
 {
-    $stmt = $conn->prepare('SELECT 1 FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = ? AND COLUMN_NAME = ?');
-    $stmt->bind_param('ss', $table, $column);
-    $stmt->execute();
-    $exists = (bool) $stmt->get_result()->fetch_row();
-    $stmt->close();
-    return $exists;
+    $safeTable = preg_replace('/[^a-zA-Z0-9_]/', '', $table);
+    $safeColumn = preg_replace('/[^a-zA-Z0-9_]/', '', $column);
+    if ($safeTable === '' || $safeColumn === '') {
+        return false;
+    }
+    try {
+        $result = $conn->query('SHOW COLUMNS FROM `' . $safeTable . '` LIKE \'' . $conn->real_escape_string($safeColumn) . '\'');
+        return $result !== false && $result->num_rows > 0;
+    } catch (Throwable $exception) {
+        error_log('[BitFlow Admin] column_exists: ' . $exception->getMessage());
+        return false;
+    }
 }
 
 function admin_ensure_schema(mysqli $conn): void
 {
-    $conn->query(
+    // Sin FK en el auto-create: en hosting compartido suele fallar y tumbar /admin.
+    $statements = [
         "CREATE TABLE IF NOT EXISTS admin_usuarios (
             id INT UNSIGNED NOT NULL AUTO_INCREMENT,
             usuario VARCHAR(60) NOT NULL,
@@ -144,10 +215,7 @@ function admin_ensure_schema(mysqli $conn): void
             PRIMARY KEY (id),
             UNIQUE KEY uq_admin_usuario (usuario),
             UNIQUE KEY uq_admin_email (email)
-        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"
-    );
-
-    $conn->query(
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci",
         "CREATE TABLE IF NOT EXISTS admin_auditoria (
             id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
             admin_id INT UNSIGNED NULL,
@@ -160,12 +228,8 @@ function admin_ensure_schema(mysqli $conn): void
             creado_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
             PRIMARY KEY (id),
             KEY idx_auditoria_fecha (creado_at),
-            KEY idx_auditoria_admin (admin_id),
-            CONSTRAINT fk_auditoria_admin FOREIGN KEY (admin_id) REFERENCES admin_usuarios(id) ON DELETE SET NULL
-        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"
-    );
-
-    $conn->query(
+            KEY idx_auditoria_admin (admin_id)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci",
         "CREATE TABLE IF NOT EXISTS admin_login_intentos (
             id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
             identificador VARCHAR(190) NOT NULL,
@@ -176,8 +240,16 @@ function admin_ensure_schema(mysqli $conn): void
             PRIMARY KEY (id),
             UNIQUE KEY uq_login_identificador_ip (identificador, ip),
             KEY idx_login_bloqueado (bloqueado_hasta)
-        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"
-    );
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci",
+    ];
+
+    foreach ($statements as $sql) {
+        try {
+            $conn->query($sql);
+        } catch (Throwable $exception) {
+            error_log('[BitFlow Admin] ensure_schema create: ' . $exception->getMessage());
+        }
+    }
 
     if (admin_table_exists($conn, 'contacto')) {
         $columns = [
@@ -189,13 +261,26 @@ function admin_ensure_schema(mysqli $conn): void
         ];
         foreach ($columns as $column => $sql) {
             if (!admin_column_exists($conn, 'contacto', $column)) {
-                $conn->query($sql);
+                try {
+                    $conn->query($sql);
+                } catch (Throwable $exception) {
+                    error_log('[BitFlow Admin] ensure_schema alter contacto.' . $column . ': ' . $exception->getMessage());
+                }
             }
         }
     }
+
+    if (!admin_table_exists($conn, 'admin_usuarios')) {
+        throw new RuntimeException('Falta la tabla admin_usuarios. Ejecutá sql/bitflow.sql o sql/admin_migration.sql en la base de producción.');
+    }
 }
 
-admin_ensure_schema($conn);
+try {
+    admin_ensure_schema($conn);
+} catch (Throwable $exception) {
+    error_log('[BitFlow Admin] ' . $exception->getMessage());
+    throw $exception;
+}
 
 function admin_count_users(mysqli $conn): int
 {
@@ -224,8 +309,17 @@ function admin_audit(mysqli $conn, string $action, ?string $entity = null, ?int 
     $resolvedAdminId = $adminId ?? (isset($user['id']) ? (int) $user['id'] : null);
     $ip = substr((string) ($_SERVER['REMOTE_ADDR'] ?? ''), 0, 45);
     $agent = substr((string) ($_SERVER['HTTP_USER_AGENT'] ?? ''), 0, 255);
-    $stmt = $conn->prepare('INSERT INTO admin_auditoria (admin_id, accion, entidad, entidad_id, detalle, ip, user_agent) VALUES (?, ?, ?, ?, ?, ?, ?)');
-    $stmt->bind_param('ississs', $resolvedAdminId, $action, $entity, $entityId, $detail, $ip, $agent);
+    $entityValue = $entity;
+    $detailValue = $detail;
+    $entityIdValue = $entityId;
+
+    if ($resolvedAdminId === null) {
+        $stmt = $conn->prepare('INSERT INTO admin_auditoria (admin_id, accion, entidad, entidad_id, detalle, ip, user_agent) VALUES (NULL, ?, ?, ?, ?, ?, ?)');
+        $stmt->bind_param('ssisss', $action, $entityValue, $entityIdValue, $detailValue, $ip, $agent);
+    } else {
+        $stmt = $conn->prepare('INSERT INTO admin_auditoria (admin_id, accion, entidad, entidad_id, detalle, ip, user_agent) VALUES (?, ?, ?, ?, ?, ?, ?)');
+        $stmt->bind_param('ississs', $resolvedAdminId, $action, $entityValue, $entityIdValue, $detailValue, $ip, $agent);
+    }
     $stmt->execute();
     $stmt->close();
 }
@@ -241,7 +335,7 @@ function admin_login_is_blocked(mysqli $conn, string $identifier): bool
     $stmt = $conn->prepare('SELECT bloqueado_hasta FROM admin_login_intentos WHERE identificador = ? AND ip = ? LIMIT 1');
     $stmt->bind_param('ss', $identifier, $ip);
     $stmt->execute();
-    $row = $stmt->get_result()->fetch_assoc();
+    $row = admin_stmt_fetch_assoc($stmt);
     $stmt->close();
     return !empty($row['bloqueado_hasta']) && strtotime((string) $row['bloqueado_hasta']) > time();
 }
@@ -252,7 +346,7 @@ function admin_record_login_failure(mysqli $conn, string $identifier): void
     $stmt = $conn->prepare('SELECT intentos, ultimo_intento, bloqueado_hasta FROM admin_login_intentos WHERE identificador = ? AND ip = ? LIMIT 1');
     $stmt->bind_param('ss', $identifier, $ip);
     $stmt->execute();
-    $row = $stmt->get_result()->fetch_assoc();
+    $row = admin_stmt_fetch_assoc($stmt);
     $stmt->close();
 
     $windowExpired = !empty($row['ultimo_intento'])

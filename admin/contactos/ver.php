@@ -13,9 +13,9 @@ function admin_find_contact(mysqli $conn, int $id): ?array
     $stmt = $conn->prepare('SELECT * FROM contacto WHERE id = ? LIMIT 1');
     $stmt->bind_param('i', $id);
     $stmt->execute();
-    $contact = $stmt->get_result()->fetch_assoc();
+    $contact = admin_stmt_fetch_assoc($stmt);
     $stmt->close();
-    return $contact ?: null;
+    return $contact;
 }
 
 $contact = admin_find_contact($conn, $contactId);

@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt = $conn->prepare('SELECT id, usuario, email, password_hash FROM admin_usuarios WHERE activo = 1 AND (LOWER(usuario) = ? OR LOWER(email) = ?) LIMIT 1');
         $stmt->bind_param('ss', $identifier, $identifier);
         $stmt->execute();
-        $user = $stmt->get_result()->fetch_assoc();
+        $user = admin_stmt_fetch_assoc($stmt);
         $stmt->close();
 
         if ($user && password_verify($password, (string) $user['password_hash'])) {
@@ -56,8 +56,8 @@ require __DIR__ . '/templates/header.php';
 ?>
 <section class="admin-auth-card">
     <div class="admin-brand">
-        <span class="admin-brand__mark">B</span>
-        <span>BitFlow <small>Admin</small></span>
+        <img class="admin-brand__logo admin-brand__logo--auth" src="<?= admin_h(admin_site_url('img/logo-bitflow-hd.png')) ?>" alt="BitFlow">
+        <span><small>Admin</small></span>
     </div>
     <h1>Iniciar sesión</h1>
     <p>Acceso exclusivo para administradores.</p>

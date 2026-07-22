@@ -61,15 +61,11 @@ button, input, select, textarea { font: inherit; }
     object-fit: contain;
     filter: drop-shadow(0 0 14px rgba(24, 215, 255, 0.22));
 }
+.admin-brand__logo--auth {
+    height: 48px;
+}
 .admin-brand__mark {
-    display: grid;
-    width: 34px;
-    height: 34px;
-    place-items: center;
-    border-radius: 10px;
-    color: #00121c;
-    background: linear-gradient(135deg, var(--cyan), var(--blue));
-    box-shadow: 0 0 24px rgba(24, 215, 255, 0.24);
+    display: none;
 }
 
 .admin-menu-button {

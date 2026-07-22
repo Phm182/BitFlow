@@ -49,7 +49,8 @@ $countStmt->bind_param(
     $dateTo
 );
 $countStmt->execute();
-$total = (int) ($countStmt->get_result()->fetch_assoc()['total'] ?? 0);
+$countRow = admin_stmt_fetch_assoc($countStmt);
+$total = (int) ($countRow['total'] ?? 0);
 $countStmt->close();
 
 $totalPages = max(1, (int) ceil($total / $perPage));
@@ -82,7 +83,7 @@ $stmt->bind_param(
     $offset
 );
 $stmt->execute();
-$contacts = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+$contacts = admin_stmt_fetch_all($stmt);
 $stmt->close();
 
 function admin_contacts_query(array $overrides = []): string
