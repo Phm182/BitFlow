@@ -77,6 +77,7 @@ require __DIR__ . '/templates/header.php';
             <input type="password" id="password" name="password" required autocomplete="current-password">
         </div>
         <button class="admin-button" type="submit">Ingresar</button>
+        <a class="admin-button admin-button--secondary" href="<?= admin_h(admin_site_url('inicio.php')) ?>">Volver a la web</a>
     </form>
 </section>
 <?php require __DIR__ . '/templates/footer.php'; ?>
