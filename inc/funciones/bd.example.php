@@ -1,33 +1,30 @@
 <?php
-    $host = 'localhost';
-    $user = 'root';
-    $password = '';
-    $dbname = 'bitflow';
-    $port = '3306';
-    
-$admin_setup_key = '123456';
+/**
+ * Copiá este archivo como bd.php y completá las credenciales del entorno.
+ * bd.php NO se versiona (está en .gitignore) para no pisar producción.
+ */
+$host = 'localhost';
+$user = 'USUARIO_BD';
+$password = 'PASSWORD_BD';
+$dbname = 'bitflow';
+$port = 3306;
 
-// Crear conexión
+$admin_setup_key = 'CAMBIAR_CLAVE_INSTALACION';
+
 $conn = new mysqli($host, $user, $password, $dbname, (int) $port);
 
-// Verificar conexión
 if ($conn->connect_error) {
-    die("Error de conexión: " . $conn->connect_error);
+    die('Error de conexión: ' . $conn->connect_error);
 }
 
 if (!$conn->set_charset('utf8mb4')) {
-    error_log("Error seteando charset utf8mb4: " . $conn->error);
+    error_log('Error seteando charset utf8mb4: ' . $conn->error);
 }
 
-// Asegurar collation uniforme en TODAS las queries
 $conn->query("SET NAMES utf8mb4 COLLATE utf8mb4_unicode_ci");
 $conn->query("SET collation_connection = 'utf8mb4_unicode_ci'");
-// Timestamps MySQL alineados a hora Argentina (misma convención que la UI y UpdatedAt en PedidoCanal).
 @$conn->query("SET time_zone = '-03:00'");
 
-/**
- * JSON UTF-8 para respuestas API (acentos y eñes legibles en el cliente).
- */
 if (!function_exists('contapp_json_encode')) {
     function contapp_json_encode($data, int $extraFlags = 0): string
     {

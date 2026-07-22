@@ -5,7 +5,8 @@
 1. Hacé un backup de la base.
 2. Para una instalación existente, importá `sql/admin_migration.sql` desde phpMyAdmin.
    Para una base nueva, importá `sql/bitflow.sql`.
-3. Revisá las credenciales de `inc/funciones/bd.php`.
+3. Copiá `inc/funciones/bd.example.php` a `inc/funciones/bd.php` y completá las credenciales del entorno.
+   `bd.php` está en `.gitignore` y no debe subirse a git (así no se pisan las de producción).
 4. Cambiá `$admin_setup_key` por una clave larga y única. Si queda vacía (`''`), el setup no solicitará clave.
 5. Abrí `/admin/`. Si todavía no hay administradores, el sistema te enviará a `/admin/setup.php`.
 6. Creá el primer usuario con una contraseña de al menos 12 caracteres e iniciá sesión.
